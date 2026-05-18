@@ -1,9 +1,6 @@
 title: ManUtd Home
 dialog: manutd-lm:pages/home
 visible: true
-baseUrl: http://localhost:3000
-routeTemplate: "{{@path}}"
-
 renderType: site-spa
 class: info.magnolia.rendering.spa.renderer.SiteAwareSpaRenderableDefinition
 

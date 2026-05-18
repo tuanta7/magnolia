@@ -4,6 +4,10 @@ domains:
   - name: localhost
 
 templates:
+  prototype:
+    class: info.magnolia.pages.spa.template.SpaPrototypeTemplateDefinition
+    baseUrl: http://localhost:3000
+    routeTemplate: "{{@path}}"
   availability:
     templates:
       home:

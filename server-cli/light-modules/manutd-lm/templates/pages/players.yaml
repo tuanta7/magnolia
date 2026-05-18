@@ -1,12 +1,8 @@
 title: ManUtd Players
 dialog: manutd-lm:pages/players
 visible: true
-baseUrl: http://localhost:3000
-routeTemplate: "{{@path}}"
-
 renderType: site-spa
 class: info.magnolia.rendering.spa.renderer.SiteAwareSpaRenderableDefinition
-$type: spaPageRenderableDefinition # Add this for SPA annotations
 
 areas:
   content:
