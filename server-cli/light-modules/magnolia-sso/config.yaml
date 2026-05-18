@@ -1,5 +1,32 @@
 # https://docs.magnolia-cms.com/magnolia-sso/#_configuring_via_yaml
 # https://manage.auth0.com/dashboard/jp/chasingx/applications/8OsZsYeUziz4PjcBaB40n0pR8z7Rpg1W/settings
+
+callbackUrl: /.auth
+postLogoutRedirectUri: http://localhost:8080
+
+authorizationGenerators:
+  - name: groupsAuthorization
+    groups:
+      targetProperty: groups #
+      mappings:
+        - name: superusers
+          targetGroups:
+            - publishers
+          targetRoles:
+            - superuser
+
 clients:
   oidc.id: 8OsZsYeUziz4PjcBaB40n0pR8z7Rpg1W
   oidc.secret: $OIDC_SECRET
+  oidc.clientAuthenticationMethod: client_secret_basic
+  oidc.scope: openid profile email
+  oidc.discoveryUri: https://chasingx.jp.auth0.com/.well-known/openid-configuration
+  oidc.authorizationGenerators: groupsAuthorization
+  oidc.preferredJwsAlgorithm: RS256
+
+userFieldMappings:
+  name: preferred_username
+  removeEmailDomainFromUserName: true
+  fullName: name
+  email: email
+  language: locale
