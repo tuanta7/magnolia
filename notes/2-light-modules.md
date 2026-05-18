@@ -1,4 +1,4 @@
-# Light Module
+# Light Modules
 
 Reference: [docs.magnolia-cms.com](https://docs.magnolia-cms.com/product-docs/modules/light-modules/)
 

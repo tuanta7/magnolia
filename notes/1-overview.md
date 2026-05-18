@@ -8,7 +8,7 @@ mgnl create-component quotation -a pages/hello@main -lm hello-magnolia
 
 ## 1. Architecture and Operation Models
 
-![arch](imgs/architecture.png)
+![arch](./.imgs/architecture.png)
 
 Reference: [Magnolia Architecture](https://docs.magnolia-cms.com/product-docs/administration/architecture/)
 
@@ -88,5 +88,3 @@ Reference: [Subapp Descriptor](https://docs.magnolia-cms.com/product-docs/apps/a
 ## 2. Headless CMS
 
 ## 3. Multicluster Environments
-
-## 4. Multisite
