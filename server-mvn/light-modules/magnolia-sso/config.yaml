@@ -2,30 +2,32 @@
 # https://manage.auth0.com/dashboard/jp/chasingx/applications/8OsZsYeUziz4PjcBaB40n0pR8z7Rpg1W/settings
 
 callbackUrl: /.auth
-postLogoutRedirectUri: http://localhost:8080
-
 authorizationGenerators:
-  - name: groupsAuthorization
-    groups:
-      targetProperty: groups #
-      mappings:
-        - name: superusers
-          targetGroups:
-            - publishers
-          targetRoles:
-            - superuser
+  - name: fixedRoleAuthorization
+    fixed:
+      targetRoles:
+        - superuser
+  # - name: groupsAuthorization
+  #   groups:
+  #     targetProperty: groups
+  #     mappings:
+  #       - name: magnolia-users
+  #         targetGroups:
+  #           - publishers
+  #         targetRoles:
+  #           - superuser
 
 clients:
   oidc.id: 8OsZsYeUziz4PjcBaB40n0pR8z7Rpg1W
-  oidc.secret: $OIDC_SECRET
+  oidc.secret: A7i30uxePuUpS2Yj6K-wCVogN4Dx5cQzaaPSQUs3AvTlFSzKKYRmvzPxRd1vi5nl
   oidc.clientAuthenticationMethod: client_secret_basic
   oidc.scope: openid profile email
   oidc.discoveryUri: https://chasingx.jp.auth0.com/.well-known/openid-configuration
-  oidc.authorizationGenerators: groupsAuthorization
+  oidc.authorizationGenerators: fixedRoleAuthorization
   oidc.preferredJwsAlgorithm: RS256
 
 userFieldMappings:
-  name: preferred_username
+  name: email
   removeEmailDomainFromUserName: true
   fullName: name
   email: email

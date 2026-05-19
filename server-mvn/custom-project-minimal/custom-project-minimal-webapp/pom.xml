@@ -54,10 +54,18 @@
       <artifactId>magnolia-site-app</artifactId>
     </dependency>
     <dependency>
+      <groupId>info.magnolia.imaging</groupId>
+      <artifactId>magnolia-imaging</artifactId>
+    </dependency>
+    <dependency>
       <groupId>info.magnolia.templating</groupId>
       <artifactId>magnolia-jsonfn</artifactId>
     </dependency>
-
+    <dependency>
+      <groupId>info.magnolia.sso</groupId>
+      <artifactId>magnolia-sso</artifactId>
+      <version>4.0.0</version>
+    </dependency>
 
     <!-- option ii - magnolia-community-webapp -->
     <!-- Dependencies versions are already imported by parent pom. Requires "Option A" in the parent pom. -->
@@ -73,23 +81,6 @@
       <type>pom</type>
     </dependency>
     -->
-
-
-    <!-- option iii - magnolia-dx-core-webapp -->
-    <!-- Dependencies versions are already imported by parent pom. Requires "Option B" in the parent pom. -->
-    <!--
-    <dependency>
-      <groupId>info.magnolia.dx</groupId>
-      <artifactId>magnolia-dx-core-webapp</artifactId>
-      <type>war</type>
-    </dependency>
-    <dependency>
-      <groupId>info.magnolia.dx</groupId>
-      <artifactId>magnolia-dx-core-webapp</artifactId>
-      <type>pom</type>
-    </dependency>
-    -->
-
   </dependencies>
 
   <build>

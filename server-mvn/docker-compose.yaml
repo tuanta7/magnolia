@@ -6,18 +6,24 @@ services:
     working_dir: /usr/src/app
     volumes:
       - ./custom-project-minimal:/usr/src/app
-      - ./.m2:/root/.m2
+      - ~/.m2:/root/.m2
     command: mvn clean install
 
   server:
-    image: tomcat:10.1.55-jdk11
+    image: tomcat:9.0-jdk11
     container_name: server
     ports:
-      - "8080:8080"
+      - "8081:8080"
     volumes:
-      - ./custom-project-minimal/target/custom-project-minimal-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/ROOT.war
+      - ./custom-project-minimal/custom-project-minimal-webapp/target/custom-project-minimal-webapp-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/ROOT.war
+      - ./logs:/usr/local/tomcat/logs
+      - /Users/kobbie.tran/tuanta/magnolia/server-mvn/light-modules:/app/light-modules
+      - /Users/kobbie.tran/tuanta/magnolia/server-mvn/repository:/app/repository
     environment:
       - magnolia.superuser.enabled=true
       - magnolia.superuser.password=superuser
+      - MAGNOLIA_RESOURCES_HOME=/app/light-modules
+      - MAGNOLIA_REPOSITORIES_HOME=/app/repositories
+      - MAGNOLIA_PROFILE=develop
     depends_on:
       - builder

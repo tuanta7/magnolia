@@ -8,7 +8,7 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <properties>
-    <magnoliaBundleVersion>6.2.17</magnoliaBundleVersion>
+    <magnoliaBundleVersion>6.2.50</magnoliaBundleVersion>
     <javaVersion>1.8</javaVersion>
     <jsonfnVersion>1.0.8</jsonfnVersion>
   </properties>
@@ -20,8 +20,6 @@
   </scm>
   <dependencyManagement>
     <dependencies>
-      <!-- Option A -->
-      <!-- Importing dependencyManagement of CE bundle. -->
       <dependency>
         <groupId>info.magnolia.bundle</groupId>
         <artifactId>magnolia-bundle-parent</artifactId>
@@ -34,17 +32,6 @@
         <artifactId>magnolia-jsonfn</artifactId>
         <version>${jsonfnVersion}</version>
       </dependency>
-      <!-- Option B -->
-      <!-- If you want to use the DX CORE. -->
-      <!--
-      <dependency>
-        <groupId>info.magnolia.dx</groupId>
-        <artifactId>magnolia-dx-core-parent</artifactId>
-        <version>${magnoliaBundleVersion}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      -->
     </dependencies>
   </dependencyManagement>
   <build>
@@ -84,16 +71,6 @@
         <enabled>true</enabled>
       </snapshots>
     </repository>
-    <!-- IF YOU NEED MODULES FROM THE ENTERPRISE VERSION, UNCOMMENT THE FOLLOWING REPOSITORY -->
-    <!--
-    <repository>
-      <id>magnolia.enterprise.releases</id>
-      <url>https://nexus.magnolia-cms.com/content/repositories/magnolia.enterprise.releases</url>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-    -->
     <repository>
       <id>vaadin-addons</id>
       <url>https://maven.vaadin.com/vaadin-addons</url>

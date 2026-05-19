@@ -1,6 +1,6 @@
 # Setup Notes for Magnolia v6.2
 
-Reference: [Maven setup](https://docs.magnolia-cms.com/product-docs/developing/development-environment/maven/)
+Reference: [Maven Setup](https://docs.magnolia-cms.com/product-docs/developing/development-environment/maven/)
 
 ## 1. Maven
 
@@ -34,7 +34,7 @@ Reference: [Creating a custom webapp with Maven](https://docs.magnolia-cms.com/p
 ```sh
 mvn archetype:generate -DarchetypeGroupId=info.magnolia.maven.archetypes -DarchetypeArtifactId=magnolia-project-archetype -DarchetypeVersion=RELEASE
 
-Define value for property 'magnolia-bundle-version': 6.2.17
+Define value for property 'magnolia-bundle-version': 6.2.50
 Define value for property 'groupId': com.example
 Define value for property 'artifactId': custom-project-minimal
 Define value for property 'version' 1.0-SNAPSHOT:
