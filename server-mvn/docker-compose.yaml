@@ -1,0 +1,23 @@
+services:
+  # docker compose up --build builder
+  builder:
+    image: maven:3.8.6-openjdk-11
+    container_name: builder
+    working_dir: /usr/src/app
+    volumes:
+      - ./custom-project-minimal:/usr/src/app
+      - ./.m2:/root/.m2
+    command: mvn clean install
+
+  server:
+    image: tomcat:10.1.55-jdk11
+    container_name: server
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./custom-project-minimal/target/custom-project-minimal-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/ROOT.war
+    environment:
+      - magnolia.superuser.enabled=true
+      - magnolia.superuser.password=superuser
+    depends_on:
+      - builder
