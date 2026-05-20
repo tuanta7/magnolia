@@ -1,0 +1,8 @@
+browser:
+  actions:
+    publish:
+      label: Let's go
+    publishRecursive:
+      label: Let's all in
+    unpublish:
+      label: Fck it I'm out

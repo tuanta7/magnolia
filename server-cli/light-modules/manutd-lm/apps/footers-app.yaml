@@ -2,6 +2,9 @@
 name: footers-app
 label: Footers
 icon: icon-templating-app
+permissions:
+  roles:
+    developer: developer
 subApps:
   detail:
     form:

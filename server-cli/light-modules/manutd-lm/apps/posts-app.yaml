@@ -2,3 +2,6 @@
 name: posts-app
 label: Posts
 icon: icon-templating-app
+permissions:
+  roles:
+    developer: developer

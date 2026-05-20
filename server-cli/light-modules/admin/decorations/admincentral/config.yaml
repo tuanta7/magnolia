@@ -4,20 +4,19 @@ layout:
     - name: content
       apps:
         - name: pages-app
-        - name: dam
+        - name: dam-app
         - name: stories
-        - name: tours
         - name: books-app
-    - name: travel
-      label: Travel
+    - name: football
+      label: Football
       apps:
-        - name: tourGuides-app
-        - name: tourOffices-app
-        - name: tourVehicles-app
+        - name: banners-app
+        - name: posts-app
+        - name: headers-app
+        - name: footers-app
   rows:
     - name: one
-      cssClass: editor
       groups:
         content: content
         marketing: marketing
-        travel: travel
+        football: football

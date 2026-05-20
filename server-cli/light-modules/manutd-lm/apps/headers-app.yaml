@@ -2,3 +2,6 @@
 name: headers-app
 label: Headers
 icon: icon-templating-app
+permissions:
+  roles:
+    developer: developer
