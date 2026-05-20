@@ -18,7 +18,7 @@ services:
       - ./custom-project-minimal/custom-project-minimal-webapp/target/custom-project-minimal-webapp-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/ROOT.war
       - ./logs:/usr/local/tomcat/logs
       - /Users/kobbie.tran/tuanta/magnolia/server-mvn/light-modules:/app/light-modules
-      - /Users/kobbie.tran/tuanta/magnolia/server-mvn/repository:/app/repository
+      - /Users/kobbie.tran/tuanta/magnolia/server-mvn/repositories:/app/repositories
     environment:
       - magnolia.superuser.enabled=true
       - magnolia.superuser.password=superuser

@@ -7,23 +7,23 @@ authorizationGenerators:
     fixed:
       targetRoles:
         - superuser
-  # - name: groupsAuthorization
-  #   groups:
-  #     targetProperty: groups
-  #     mappings:
-  #       - name: magnolia-users
-  #         targetGroups:
-  #           - publishers
-  #         targetRoles:
-  #           - superuser
+  - name: groupsAuthorization
+    groups:
+      targetProperty: magnolia-groups
+      mappings:
+        - name: magnolia-users
+          targetRoles:
+            - developer
+            - editor
 
 clients:
   oidc.id: 8OsZsYeUziz4PjcBaB40n0pR8z7Rpg1W
-  oidc.secret: A7i30uxePuUpS2Yj6K-wCVogN4Dx5cQzaaPSQUs3AvTlFSzKKYRmvzPxRd1vi5nl
+  oidc.secret: $OIDC_CLIENT_SECRET
   oidc.clientAuthenticationMethod: client_secret_basic
   oidc.scope: openid profile email
   oidc.discoveryUri: https://chasingx.jp.auth0.com/.well-known/openid-configuration
-  oidc.authorizationGenerators: fixedRoleAuthorization
+  #oidc.authorizationGenerators: fixedRoleAuthorization
+  oidc.authorizationGenerators: groupsAuthorization
   oidc.preferredJwsAlgorithm: RS256
 
 userFieldMappings:

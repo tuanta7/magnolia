@@ -1,0 +1,15 @@
+{
+  "magnolia-groups": ["magnolia-users"],
+  "nickname": "ryh",
+  "name": "Ryu",
+  "picture": "https://s.gravatar.com/avatar/655551aa9b894f39f838d759ea28e17d?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fry.png",
+  "updated_at": "2026-05-19T10:20:26.024Z",
+  "email": "ryu@chasingx.com.vn",
+  "email_verified": false,
+  "iss": "https://chasingx.jp.auth0.com/",
+  "aud": "8OsZsYeUziz4PjcBaB40n0pR8z7Rpg1W",
+  "sub": "auth0|69e9bd8b422c4a8dfbcbf2a0",
+  "iat": 1779248185,
+  "exp": 1779284185,
+  "sid": "9AwfCI6ZTb6TFhl5t1XvbnQU6Z4YCqqG"
+}
