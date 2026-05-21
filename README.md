@@ -11,3 +11,10 @@ Magnolia CMS and its ecosystem.
 - Actions in apps, forms and dialogs: [Action definition](https://docs.magnolia-cms.com/product-docs/apps/app-configuration/action-definition)
 - Multisite (ony one site is allowed in the Community Edition): [How to use Multisite](https://docs.magnolia-cms.com/product-docs/developing/templating/site-definition/how-to-use-multisite/)
 - React SDK: [Magnolia React Editor](https://docs.magnolia-cms.com/product-docs/developing/headless/spa-development/magnolia-front-end-sdk/magnolia-react-editor/)
+
+## API Examples
+
+```sh
+# Get page with Vietnamese contents
+http://localhost:8080/magnoliaAuthor/.rest/delivery/v1/pages/manutd-api/manutd?lang=vi
+```

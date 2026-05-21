@@ -17,7 +17,9 @@ form:
       $type: codeField
       required: true
       language: html
+      i18n: true
     css:
       label: CSS
       $type: codeField
       language: css
+      i18n: false

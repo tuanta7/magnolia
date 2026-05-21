@@ -28,5 +28,19 @@ cors:
 
 i18n:
   class: info.magnolia.cms.i18n.DefaultI18nContentSupport
+  defaultLocale: en
   enabled: true
   fallbackLocale: en
+  locales:
+    en:
+      country: ""
+      enabled: true
+      language: en
+    vi:
+      country: ""
+      enabled: true
+      language: vi
+    th:
+      country: ""
+      enabled: true
+      language: th
