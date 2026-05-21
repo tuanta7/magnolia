@@ -5,7 +5,6 @@ depth: 10
 limit: 10
 referenceDepth: 2
 includeSystemProperties: true
-
 systemProperties:
   - mgnl:template
   - mgnl:createdBy
@@ -16,3 +15,15 @@ childNodeTypes:
   - mgnl:area
   - mgnl:component
   - mgnl:contentNode
+
+references:
+  - name: footerReference
+    propertyName: footer
+    referenceResolver:
+      $type: jcrReferenceResolver
+      targetWorkspace: footers
+      depthInReferencedNode: 2
+  - name: iconReference
+    propertyName: icon
+    referenceResolver:
+      $type: assetReferenceResolver

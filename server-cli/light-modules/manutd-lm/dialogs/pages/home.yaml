@@ -28,5 +28,5 @@ form:
         workbenchChooser:
           appName: footers-app
       textInputAllowed: false
-      converterClass: info.magnolia.ui.editor.converter.JcrNodeToPathConverter # For easier manual fetch
-      #converterClass: info.magnolia.ui.editor.converter.JcrNodeToIdentifierConverter
+      converterClass: info.magnolia.ui.editor.converter.JcrNodeToIdentifierConverter
+      #converterClass: info.magnolia.ui.editor.converter.JcrNodeToPathConverter

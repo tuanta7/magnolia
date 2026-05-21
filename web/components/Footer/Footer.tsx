@@ -9,11 +9,7 @@ const Footer = ({ footer }: FooterProps) => {
           {footer.channels["@nodes"]?.map((ch) => {
             const channel = footer.channels[ch];
             return (
-              <FooterChannel
-                key={channel["@name"]}
-                link={channel.link}
-                iconLink={getAssetUrl(channel.icon["@path"])}
-              />
+              <FooterChannel key={channel["@name"]} link={channel.link} iconLink={getAssetUrl(channel.icon["@path"])} />
             );
           })}
         </div>
@@ -22,9 +18,7 @@ const Footer = ({ footer }: FooterProps) => {
           <button className="px-5 py-2 rounded-full border border-gray-500 text-white hover:bg-gray-700 transition">
             LOG IN
           </button>
-          <button className="px-5 py-2 rounded-full bg-red-600 text-white hover:bg-red-500 transition">
-            SIGN UP
-          </button>
+          <button className="px-5 py-2 rounded-full bg-red-600 text-white hover:bg-red-500 transition">SIGN UP</button>
         </div>
       </div>
     </footer>
