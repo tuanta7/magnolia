@@ -1,0 +1,32 @@
+actions:
+  review:
+    availability:
+      access:
+        roles:
+          superuser: superuser
+  claim: # assign to me
+    availability:
+      access:
+        roles:
+          approver: approver
+  approve: # approve and publish
+    availability:
+      access:
+        roles:
+          approver: approver
+  confirmRejection:
+    availability:
+      access:
+        roles:
+          approver: approver
+  retry: # retry after failed publish
+    availability:
+      access:
+        roles:
+          approver: approver
+  abort:
+    availability:
+      access:
+        roles:
+          approver: approver
+          developer: developer
