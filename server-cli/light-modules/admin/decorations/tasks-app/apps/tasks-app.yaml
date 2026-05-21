@@ -1,0 +1,14 @@
+subApps:
+  browser:
+    actions:
+      claim:
+        availability:
+          access:
+            roles:
+              approver: approver
+      abort:
+        availability:
+          access:
+            roles:
+              approver: approver
+              developer: developer

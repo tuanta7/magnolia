@@ -29,18 +29,26 @@ It is also possible to Unpublish a previously published page. However, this too 
 
 Whenever an editor create a task, all publishers inside the sent group will be informed that the system has registered a new task.
 
-- The message view (actions) at the task list screen is configured in the Workflow module (`/modules/workflow/messageViews/publish`) or in Pages app (`/modules/pages-app/messageViews/publish`)?
-- The message views for the task details screen are configured in `/modules/workflow-jbpm/tasks/publish/viewMapping`?
+- The message view (actions) at the task list screen is configured in the tasks-app `light-modules/<lm-name>/decorations/tasks-app/`
+- The message views for the task details screen are configured in the pages-app `light-modules/<lm-name>/decorations/pages-app/`
 
-| Action              | Description |
-| ------------------- | ----------- |
-| Assign to me        |             |
-| Approve and publish |             |
-| Reject              |             |
-| Abort               |             |
-| Preview page        |             |
-| Show changes        |             |
+| Action              | Screen  | Description                                  |
+| ------------------- | ------- | -------------------------------------------- |
+| Assign to me        | Both    | Assign it to yourself to take further action |
+| Approve and publish | Preview | Publish the content                          |
+| Reject              | Preview | Reject the changes with an optional message  |
+| Abort               | Both    | Abort the workflow                           |
+| Preview page        | Preview | Show the page content?                       |
+| Show changes        | Preview | Compare the content to previous versions     |
+| Retry publication   | Preview |                                              |
+| Remove from list    | Preview | Similar to archive?                          |
+| Archive             | Tasks   | Remove from the Tasks app UI                 |
+| Preview Task        | Tasks   | Go to the preview screen                     |
 
 ### Publishing Content
 
 The final step in the workflow process is the transfer of content from author to those public instances which should receive that content.
+
+## 3. Custom
+
+Reference: [Content Import Request message view](https://docs.magnolia-cms.com/product-docs/modules/list-of-modules/content-importer-module/#_content_import_request_message_view)
