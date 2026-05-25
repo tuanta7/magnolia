@@ -16,7 +16,7 @@ const HomePage = async ({ content, footer, customHeader, customFooter }: HomePag
   return (
     <>
       <header>{customHeader && <EditableArea content={customHeader} />}</header>
-      <main>{content && <EditableArea content={content} />}</main>
+      <main className="min-h-[90vh] p-6 border-t">{content && <EditableArea content={content} />}</main>
       <footer>
         <FooterArea content={customFooter} footer={footerComponent} />
       </footer>

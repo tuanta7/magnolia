@@ -14,12 +14,10 @@ export const dynamic = "force-dynamic";
 
 export default async function Page({ params, searchParams }: Props) {
   const { slug } = await params;
-  const path = "/".concat(slug.join("/"));
+  const path = "/manutd/".concat(slug ? slug.join("/") : "");
   const searchMap = await searchParams;
   const searchSring =
-    Object.keys(searchMap).length > 0
-      ? `?${new URLSearchParams(searchMap as Record<string, string>).toString()}`
-      : "";
+    Object.keys(searchMap).length > 0 ? `?${new URLSearchParams(searchMap as Record<string, string>).toString()}` : "";
 
   const ctx = await EditorContextService.getMagnoliaContext(
     path + searchSring,
@@ -29,15 +27,7 @@ export default async function Page({ params, searchParams }: Props) {
 
   const page = await getPage(path, ctx.search);
 
-  const templateAnnotations = ctx.isMagnolia
-    ? await getTemplateAnnotations(path, ctx.search)
-    : undefined;
+  const templateAnnotations = ctx.isMagnolia ? await getTemplateAnnotations(path, ctx.search) : undefined;
 
-  return (
-    <MagnoliaPage
-      page={page}
-      ctx={ctx}
-      templateAnnotations={templateAnnotations}
-    />
-  );
+  return <MagnoliaPage page={page} ctx={ctx} templateAnnotations={templateAnnotations} />;
 }
