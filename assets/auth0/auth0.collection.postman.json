@@ -1,0 +1,106 @@
+{
+  "info": {
+    "_postman_id": "12d3fa3f-f059-4ba3-9689-6eda33615d0a",
+    "name": "Auth0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "23732015"
+  },
+  "item": [
+    {
+      "name": "OpenID Configuration",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://chasingx.jp.auth0.com/.well-known/openid-configuration",
+          "protocol": "https",
+          "host": [
+            "chasingx",
+            "jp",
+            "auth0",
+            "com"
+          ],
+          "path": [
+            ".well-known",
+            "openid-configuration"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Authorization",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://chasingx.jp.auth0.com/authorize?client_id=8OsZsYeUziz4PjcBaB40n0pR8z7Rpg1W&response_type=code&scope=openid profile email&redirect_uri=https://example.com",
+          "protocol": "https",
+          "host": [
+            "chasingx",
+            "jp",
+            "auth0",
+            "com"
+          ],
+          "path": [
+            "authorize"
+          ],
+          "query": [
+            {
+              "key": "client_id",
+              "value": "8OsZsYeUziz4PjcBaB40n0pR8z7Rpg1W",
+              "type": "text"
+            },
+            {
+              "key": "response_type",
+              "value": "code",
+              "type": "text"
+            },
+            {
+              "key": "scope",
+              "value": "openid profile email",
+              "type": "text"
+            },
+            {
+              "key": "redirect_uri",
+              "value": "https://example.com",
+              "type": "text"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Token",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"code\": \"3iiQ_awWSZ1iiySaPUbg7w0PlphHKtHeHod4wsaFH8pV2\",\n    \"client_id\": \"8OsZsYeUziz4PjcBaB40n0pR8z7Rpg1W\",\n    \"client_secret\": \"A7i30uxePuUpS2Yj6K-wCVogN4Dx5cQzaaPSQUs3AvTlFSzKKYRmvzPxRd1vi5nl\",\n    \"grant_type\": \"authorization_code\",\n    \"redirect_uri\": \"https://example.com\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://chasingx.jp.auth0.com/oauth/token",
+          "protocol": "https",
+          "host": [
+            "chasingx",
+            "jp",
+            "auth0",
+            "com"
+          ],
+          "path": [
+            "oauth",
+            "token"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
