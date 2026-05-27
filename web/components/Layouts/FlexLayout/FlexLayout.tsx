@@ -1,4 +1,4 @@
-import { EditableComponent } from "@magnolia/react-editor";
+import { EditableArea } from "@magnolia/react-editor";
 
 type FlexLayoutProps = {
   margin?: string;
@@ -18,8 +18,7 @@ const FlexLayout = (props: FlexLayoutProps) => {
         margin: marginValue,
       }}
     >
-      <p>Flex Container</p>
-      {content && <EditableComponent content={content} />}
+      {content && <EditableArea content={content} />}
     </div>
   );
 };
