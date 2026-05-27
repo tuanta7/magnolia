@@ -11,6 +11,8 @@ areas:
     availableComponents:
       code:
         id: manutd-lm:components/code
+      flexLayout:
+        id: manutd-lm:components/layouts/flexLayout
   # customArea:
   #   type: single
   #   title: Area

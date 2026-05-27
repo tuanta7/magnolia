@@ -3,7 +3,7 @@ workspace: website
 rootPath: /
 depth: 10
 limit: 10
-referenceDepth: 2
+referenceDepth: 3
 includeSystemProperties: true
 systemProperties:
   - mgnl:template

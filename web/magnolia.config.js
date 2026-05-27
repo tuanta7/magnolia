@@ -1,4 +1,4 @@
-import { Footer, Code } from "@/components";
+import { Footer, Code, FlexLayout, TwoColumnsLayout } from "@/components";
 import { HomePage, PlayersPage } from "@/templates/pages";
 
 const config = {
@@ -8,6 +8,9 @@ const config = {
 
     "manutd-lm:components/code": Code,
     "manutd-lm:components/footer": Footer,
+
+    "manutd-lm:components/layouts/flexLayout": FlexLayout,
+    "manutd-lm:components/layouts/twoColumnsLayout": TwoColumnsLayout,
   },
 };
 

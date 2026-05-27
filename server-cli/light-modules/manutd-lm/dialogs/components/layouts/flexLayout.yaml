@@ -1,0 +1,36 @@
+label: Flex Container
+form:
+  properties:
+    margin:
+      label: Margin
+      $type: textField
+      placeholder: e.g. 20px, 1rem, etc.
+    padding:
+      $type: switchableField
+      label: Padding
+      field:
+        $type: radioButtonGroupField
+        defaultValue: default
+        layout: horizontal
+        datasource:
+          $type: optionListDatasource
+          options:
+            - name: true
+              label: Use default padding
+              value: true
+            - name: false
+              label: No padding
+              value: false
+            - name: custom
+              label: Custom padding
+              value: custom
+      itemProvider:
+        $type: jcrChildNodeProvider
+      forms:
+        - name: custom
+          label: Custom Padding
+          properties:
+            value:
+              label: Padding value
+              $type: textField
+              placeholder: e.g. 20px, 1rem, etc.

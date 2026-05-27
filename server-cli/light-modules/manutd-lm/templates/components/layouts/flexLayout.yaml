@@ -1,0 +1,7 @@
+title: Flex Layout
+dialog: manutd-lm:components/layouts/flexLayout
+availableComponents:
+  flexLayout:
+    id: manutd-lm:components/layouts/flexLayout
+  code:
+    id: manutd-lm:components/code
