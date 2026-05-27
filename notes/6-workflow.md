@@ -51,4 +51,4 @@ The final step in the workflow process is the transfer of content from author to
 
 ## 3. Custom
 
-Reference: [Content Import Request message view](https://docs.magnolia-cms.com/product-docs/modules/list-of-modules/content-importer-module/#_content_import_request_message_view)
+Reference: [Content Import Request Message View](https://docs.magnolia-cms.com/product-docs/modules/list-of-modules/content-importer-module/#_content_import_request_message_view)

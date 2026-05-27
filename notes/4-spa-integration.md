@@ -13,6 +13,8 @@ Reference: [Site Definition](https://docs.magnolia-cms.com/product-docs/developi
 > [!IMPORTANT]
 > In Magnolia 6.3 and later, site definitions are registered in light modules and not directly in the multisite module
 
+Site definitions enable individually controlling across multiple websites, each with distinct domains and languages, within a single Magnolia installation. Each website corresponds to a website’s root page and its subpages in the Pages app.
+
 ### Example: Two sites with different domains
 
 Reference: [Multisite example](https://docs.magnolia-cms.com/product-docs/developing/templating/site-definition/how-to-use-multisite/multisite-example-two-sites-with-different-domains/)
@@ -86,6 +88,8 @@ Reference: [Properties for resolving references](https://docs.magnolia-cms.com/r
 ## 3. GraphQL Module
 
 Reference: [GraphQL module](https://docs.magnolia-cms.com/product-docs/modules/list-of-modules/graphql-module)
+
+The module itself does not require any configuration adjustments. It is ready for use once your Magnolia instance is up and running.
 
 To disable a GraphQL schema for a content type, use definition decoration, for example:
 

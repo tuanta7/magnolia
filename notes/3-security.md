@@ -1,14 +1,8 @@
 # Security App
 
-## 1. Administrator Settings
-
-Reference: [Administration](https://docs.magnolia-cms.com/product-docs/administration/)
-
-### Content Security Policy Header
-
 Reference: [CSP Header](https://docs.magnolia-cms.com/product-docs/administration/security/#_content_security_policy_csp_header)
 
-## 2. Roles & ACLs (IAM)
+## 1. Access Control Lists
 
 Reference: [Roles and access control lists](https://docs.magnolia-cms.com/product-docs/administration/iam/roles-and-access-control-lists/)
 
@@ -31,3 +25,24 @@ Web access in Magnolia is a type of permission that controls which HTTP paths an
 
 - Typically, at least deny the anonymous role access to AdminCentral (deny access to the `/.magnolia` path).
 - On a public instance, deny the anonymous role access to AdminCentral and any members-only/testing sections of the site.
+
+## 2. Administrator Settings
+
+Reference: [Administration](https://docs.magnolia-cms.com/product-docs/administration/)
+
+Digital experience administrators typically make high level decisions related to setup, user management, configuration, technical requirements, language needs, how metrics are used, and oversee vital security operations.
+
+### App Visibility
+
+In Magnolia CMS, app visibility operates on three interconnected layers: the App Launcher Layout, App-level permissions, and Path-level (JCR) visibility.
+
+| Target                                | Where to config?                    |
+| ------------------------------------- | ----------------------------------- |
+| Defines a list of apps to be hidden   | Layout Decorations LM - hiddenApps  |
+| Defines which users can see the group | Layout Decorations LM - permissions |
+| Defines which users can see the app   | Content App LM - permissions        |
+| Defines which users can see the path  | Role's ACLs - Read Permission       |
+
+### Action & Action Bar Availability
+
+### Content Security Policy Header
