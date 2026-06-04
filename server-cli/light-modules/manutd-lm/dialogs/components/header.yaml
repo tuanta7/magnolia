@@ -1,6 +1,10 @@
 label: Header
 form:
   properties:
+    sponsors:
+      label: Sponsor(s)
+      $type: damLinkField
+      multiple: true
     description:
       label: Description
       $type: staticField

@@ -1,7 +1,0 @@
-!content-type:banner
-name: banners-app
-label: Banners
-icon: icon-templating-app
-permissions:
-  roles:
-    developer: developer

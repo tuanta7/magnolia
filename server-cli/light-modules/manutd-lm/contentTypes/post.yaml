@@ -1,3 +1,19 @@
 datasource:
   workspace: posts
   autoCreate: true
+
+model:
+  nodeType: mgnl:post
+  properties:
+    - name: name
+      label: Title
+      type: string
+    - name: category
+      label: Category
+      type: string
+    - name: thumbnail
+      label: Thumbnail
+      type: asset
+    - name: body
+      label: Body
+      type: string

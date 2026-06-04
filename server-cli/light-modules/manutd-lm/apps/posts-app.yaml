@@ -5,3 +5,29 @@ icon: icon-templating-app
 permissions:
   roles:
     developer: developer
+subApps:
+  detail:
+    label: Create new Post
+    form:
+      properties:
+        - name: name
+          $type: textField
+          label: Title
+        - name: category
+          $type: comboBoxField
+          label: Category
+          datasource:
+            $type: optionListDatasource
+            options:
+              interviews:
+                label: Interviews
+                value: interviews
+              podcast:
+                label: Podcast
+                value: podcase
+              highlights:
+                label: Highlights
+                value: highlights
+        - name: body
+          $type: richTextField
+          labe: Body
