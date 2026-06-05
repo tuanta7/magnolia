@@ -1,5 +1,5 @@
 import { MagnoliaConfig } from "@magnolia/react-editor";
-import { Footer, Code, FlexLayout, TwoColumnsLayout } from "@/components";
+import { Footer, Code, FlexLayout, TwoColumnsLayout } from "@/templates/components";
 import { HomePage, PlayersPage } from "@/templates/pages";
 
 const config: MagnoliaConfig = {
