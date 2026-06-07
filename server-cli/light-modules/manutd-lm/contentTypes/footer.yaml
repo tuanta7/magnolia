@@ -7,13 +7,34 @@ model:
   properties:
     - name: name
       type: string
+    - name: logo
+      type: asset
     - name: channels
       type: channel
       multiple: true
+    - name: links
+      type: link
+      multiple: true
+    - name: legalLinks
+      type: link
+      multiple: true
+    - name: appLinks
+      type: link
+      multiple: true
+    - name: copyright
+      type: string
   subModels:
     channel:
       properties:
         - name: name
+          type: string
+        - name: link
+          type: string
+        - name: icon
+          type: asset
+    link:
+      properties:
+        - name: label
           type: string
         - name: link
           type: string

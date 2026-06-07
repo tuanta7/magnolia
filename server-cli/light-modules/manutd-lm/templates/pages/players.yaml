@@ -1,4 +1,4 @@
-title: ManUtd Players
+title: Players Page
 dialog: manutd-lm:pages/players
 visible: true
 renderType: site-spa

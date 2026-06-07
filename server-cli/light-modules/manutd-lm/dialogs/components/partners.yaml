@@ -1,21 +1,21 @@
-label: Header
+label: Partners
 form:
   properties:
     description:
       label: Description
       $type: staticField
-      value: Add Header into the content page
-    header:
-      label: Header
+      value: Add partners into the content page
+    partners:
+      label: Partners
       $type: linkField
       i18n: false
-      placeholder: Select a header
+      placeholder: Select partners
       textInputAllowed: false
       required: true
       datasource:
         $type: jcrDatasource
-        workspace: headers
+        workspace: partners
       chooser:
         workbenchChooser:
-          appName: headers-app
+          appName: partners-app
       converterClass: info.magnolia.ui.editor.converter.JcrNodeToPathConverter

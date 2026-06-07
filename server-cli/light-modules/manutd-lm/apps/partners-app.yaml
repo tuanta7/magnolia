@@ -1,27 +1,23 @@
-!content-type:header
-name: headers-app
-label: Headers
+!content-type:partners
+name: partners-app
+label: Partners
 icon: icon-templating-app
 permissions:
   roles:
     developer: developer
 subApps:
   detail:
-    label: New header
     form:
       properties:
         - name: name
           $type: textField
           label: Name
-        - name: logo
-          $type: damLinkField
-          label: Logo
-        - name: sponsors
+        - name: principalPartners
           $type: jcrMultiField
-          label: Sponsors
+          label: Principal partners
           field:
             $type: compositeField
-            label: Sponsor
+            label: Principal partner
             properties:
               - name: name
                 $type: textField
@@ -32,16 +28,19 @@ subApps:
               - name: link
                 $type: textField
                 label: Link
-        - name: navLinks
+        - name: globalPartners
           $type: jcrMultiField
-          label: Navigation links
+          label: Global partners
           field:
             $type: compositeField
-            label: Navigation link
+            label: Global partner
             properties:
-              - name: label
+              - name: name
                 $type: textField
-                label: Label
+                label: Name
+              - name: logo
+                $type: damLinkField
+                label: Logo
               - name: link
                 $type: textField
                 label: Link

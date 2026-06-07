@@ -1,0 +1,6 @@
+label: News Listing Page
+form:
+  properties:
+    title:
+      label: Title
+      $type: textField

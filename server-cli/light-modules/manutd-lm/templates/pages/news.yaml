@@ -1,5 +1,5 @@
-title: Home Page
-dialog: manutd-lm:pages/home
+title: News Page
+dialog: manutd-lm:pages/news
 visible: true
 renderType: site-spa
 class: info.magnolia.rendering.spa.renderer.SiteAwareSpaRenderableDefinition
@@ -9,19 +9,23 @@ areas:
     type: single
     title: Header Area
     availableComponents:
-      code:
-        id: manutd-lm:components/code
+      header:
+        id: manutd-lm:components/header
   content:
-    type: list
+    type: single
     title: Content Area
     availableComponents:
-      code:
-        id: manutd-lm:components/code
-  footer: # This one is a component reference
+      news:
+        id: manutd-lm:components/posts
+  partners:
+    type: single
+    title: Partners Area
+    availableComponents:
+      partners:
+        id: manutd-lm:components/partners
+  footer:
     type: single
     title: Footer Area
     availableComponents:
       footer:
         id: manutd-lm:components/footer
-      code:
-        id: manutd-lm:components/code

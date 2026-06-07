@@ -25,6 +25,7 @@ const MGNL_API_ASSETS = getRequiredEnv("MGNL_API_ASSETS", process.env.MGNL_API_A
 const MGNL_API_TEMPLATES = getRequiredEnv("MGNL_API_TEMPLATES", process.env.MGNL_API_TEMPLATES);
 const MGNL_API_PAGES = getRequiredEnv("MGNL_API_PAGES", process.env.MGNL_API_PAGES);
 const MGNL_API_FOOTERS = getRequiredEnv("MGNL_API_FOOTERS", process.env.MGNL_API_FOOTERS);
+const MGNL_DELIVERY_BASE = `${MGNL_URL}/.rest/delivery/v1`;
 
 export const environments = {
   mgnlSitePath: MGNL_SITE_PATH,
@@ -33,4 +34,7 @@ export const environments = {
   mgnlTemplates: `${MGNL_URL}${MGNL_API_TEMPLATES}`,
   mgnlPages: `${MGNL_URL}${MGNL_API_PAGES}`,
   mgnlFooters: `${MGNL_URL}${MGNL_API_FOOTERS}`,
+  mgnlPosts: `${MGNL_DELIVERY_BASE}/posts`,
+  mgnlHeaders: `${MGNL_DELIVERY_BASE}/headers`,
+  mgnlPartners: `${MGNL_DELIVERY_BASE}/partners`,
 };

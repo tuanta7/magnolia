@@ -1,0 +1,18 @@
+class: info.magnolia.rest.delivery.jcr.v2.JcrDeliveryEndpointDefinition
+workspace: posts
+depth: 10
+limit: 50
+referenceDepth: 2
+includeSystemProperties: true
+systemProperties:
+  - mgnl:created
+  - mgnl:lastModified
+
+nodeTypes:
+  - mgnl:post
+
+references:
+  - name: thumbnailReference
+    propertyName: thumbnail
+    referenceResolver:
+      $type: assetReferenceResolver

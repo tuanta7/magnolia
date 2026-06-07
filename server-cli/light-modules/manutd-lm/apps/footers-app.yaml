@@ -12,6 +12,9 @@ subApps:
         - name: name
           $type: textField
           label: Name
+        - name: logo
+          $type: damLinkField
+          label: Logo
         - name: channels
           $type: jcrMultiField
           label: Channels
@@ -28,3 +31,48 @@ subApps:
               - name: icon
                 $type: damLinkField
                 label: Icon
+        - name: links
+          $type: jcrMultiField
+          label: Links
+          field:
+            $type: compositeField
+            label: Link
+            properties:
+              - name: label
+                $type: textField
+                label: Label
+              - name: link
+                $type: textField
+                label: Link
+        - name: legalLinks
+          $type: jcrMultiField
+          label: Legal links
+          field:
+            $type: compositeField
+            label: Legal link
+            properties:
+              - name: label
+                $type: textField
+                label: Label
+              - name: link
+                $type: textField
+                label: Link
+        - name: appLinks
+          $type: jcrMultiField
+          label: App links
+          field:
+            $type: compositeField
+            label: App link
+            properties:
+              - name: label
+                $type: textField
+                label: Label
+              - name: link
+                $type: textField
+                label: Link
+              - name: icon
+                $type: damLinkField
+                label: Icon
+        - name: copyright
+          $type: textField
+          label: Copyright

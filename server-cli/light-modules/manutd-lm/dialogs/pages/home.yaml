@@ -6,6 +6,7 @@ form:
       - name: tabMain
         fields:
           - name: title
+          - name: defaultHeader
           - name: defaultFooter
       - name: tabMeta
         fields:
@@ -18,15 +19,19 @@ form:
       label: Code
       $type: codeField
       language: html
+    defaultHeader:
+      $type: linkField
+      label: Header
+      datasource:
+        $type: jcrDatasource
+        workspace: headers
+      textInputAllowed: false
     defaultFooter: # This one is for the reference a footer data, not a component, so there is no mgnl:template
       $type: linkField
       label: Footer
       datasource:
         $type: jcrDatasource
         workspace: footers
-      chooser:
-        workbenchChooser:
-          appName: footers-app
       textInputAllowed: false
       converterClass: info.magnolia.ui.editor.converter.JcrNodeToIdentifierConverter
       #converterClass: info.magnolia.ui.editor.converter.JcrNodeToPathConverter

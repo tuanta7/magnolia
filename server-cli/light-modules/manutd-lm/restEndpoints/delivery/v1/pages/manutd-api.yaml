@@ -18,6 +18,12 @@ childNodeTypes:
 
 references:
   - name: footerReference
+    propertyName: defaultHeader
+    referenceResolver:
+      $type: jcrReferenceResolver
+      targetWorkspace: headers
+      depthInReferencedNode: 2
+  - name: footerReference
     propertyName: defaultFooter
     referenceResolver:
       $type: jcrReferenceResolver
@@ -25,5 +31,9 @@ references:
       depthInReferencedNode: 2
   - name: iconReference
     propertyName: icon
+    referenceResolver:
+      $type: assetReferenceResolver
+  - name: heroImageReference
+    propertyName: heroImage
     referenceResolver:
       $type: assetReferenceResolver

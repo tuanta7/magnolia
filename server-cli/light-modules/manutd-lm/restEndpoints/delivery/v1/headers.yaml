@@ -1,17 +1,13 @@
 class: info.magnolia.rest.delivery.jcr.v2.JcrDeliveryEndpointDefinition
-workspace: footers
+workspace: headers
 depth: 10
 limit: 10
 referenceDepth: 2
 nodeTypes:
-  - mgnl:footer
+  - mgnl:header
 
 references:
   - name: logoReference
     propertyName: logo
-    referenceResolver:
-      $type: assetReferenceResolver
-  - name: iconReference
-    propertyName: icon
     referenceResolver:
       $type: assetReferenceResolver

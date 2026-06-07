@@ -6,6 +6,9 @@ model:
   nodeType: mgnl:post
   properties:
     - name: name
+      label: Name
+      type: string
+    - name: title
       label: Title
       type: string
     - name: category
@@ -14,6 +17,12 @@ model:
     - name: thumbnail
       label: Thumbnail
       type: asset
+    - name: createdAt
+      label: Created at
+      type: date
+    - name: redirectLink
+      label: Redirect link
+      type: string
     - name: body
       label: Body
       type: string

@@ -1,0 +1,24 @@
+datasource:
+  workspace: partners
+  autoCreate: true
+
+model:
+  nodeType: mgnl:partners
+  properties:
+    - name: name
+      type: string
+    - name: principalPartners
+      type: partner
+      multiple: true
+    - name: globalPartners
+      type: partner
+      multiple: true
+  subModels:
+    partner:
+      properties:
+        - name: name
+          type: string
+        - name: logo
+          type: asset
+        - name: link
+          type: string

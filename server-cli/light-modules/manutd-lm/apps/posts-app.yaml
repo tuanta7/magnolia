@@ -12,6 +12,9 @@ subApps:
       properties:
         - name: name
           $type: textField
+          label: Name
+        - name: title
+          $type: textField
           label: Title
         - name: category
           $type: comboBoxField
@@ -24,10 +27,22 @@ subApps:
                 value: interviews
               podcast:
                 label: Podcast
-                value: podcase
+                value: podcast
               highlights:
                 label: Highlights
                 value: highlights
+              news:
+                label: News
+                value: news
+        - name: thumbnail
+          $type: damLinkField
+          label: Thumbnail
+        - name: createdAt
+          $type: dateField
+          label: Created at
+        - name: redirectLink
+          $type: textField
+          label: Redirect link
         - name: body
           $type: richTextField
-          labe: Body
+          label: Body

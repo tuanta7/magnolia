@@ -14,6 +14,8 @@ templates:
         id: manutd-lm:pages/home
       players:
         id: manutd-lm:pages/players
+      news:
+        id: manutd-lm:pages/news
 
 mappings:
   manutd:

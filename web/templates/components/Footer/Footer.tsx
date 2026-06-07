@@ -1,25 +1,86 @@
-import { getAssetUrl, getFooter } from "@/lib/magnolia";
-import { FooterChannel } from "./FooterChannel";
+import { getAssetUrl, getFooter, path as getPath } from "@/lib/magnolia";
+import { nodeList } from "@/lib/magnolia/nodeList";
+import Image from "next/image";
 
-const Footer = async ({ path }: FooterProps) => {
-  const footer = path ? await getFooter(path) : undefined;
+const Footer = async ({ path, footer: footerReference }: FooterProps) => {
+  const footerPath = path || getPath(footerReference);
+  const footer = footerPath ? await getFooter(footerPath) : undefined;
+  const logo = getAssetUrl(getPath(footer?.logo));
+  const channels = nodeList<FooterChannelType>(footer?.channels);
+  const links = nodeList<FooterLinkType>(footer?.links);
+  const legalLinks = nodeList<FooterLinkType>(footer?.legalLinks);
+  const appLinks = nodeList<FooterLinkType>(footer?.appLinks);
 
   return (
-    <footer className="bg-gray-900 px-6 py-4">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <div className="flex gap-6 min-w-content">
-          {footer?.channels?.["@nodes"]?.map((ch) => {
-            const channel = footer.channels[ch];
-            return (
-              <FooterChannel key={channel["@name"]} link={channel.link} iconLink={getAssetUrl(channel.icon["@path"])} />
-            );
-          })}
+    <footer className="bg-neutral-950 px-4 py-8 text-white">
+      <div className="mx-auto max-w-7xl">
+        <div className="flex flex-col gap-8 border-b border-white/15 pb-8 md:flex-row md:items-start md:justify-between">
+          <div>
+            {logo && (
+              <Image
+                src={logo}
+                alt={footer?.name || "Manchester United"}
+                className="h-16 w-auto object-contain"
+                height={100}
+                width={100}
+              />
+            )}
+            <div className="mt-5 flex flex-wrap gap-3">
+              {channels.map((channel) => {
+                const icon = getAssetUrl(getPath(channel.icon));
+
+                return (
+                  <a
+                    key={channel["@name"]}
+                    href={channel.link || "#"}
+                    className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition hover:bg-white/20"
+                    aria-label={channel.name}
+                  >
+                    {icon && <Image src={icon} alt="" className="h-5 w-5 object-contain" height={100} width={100} />}
+                    {!icon && <span className="text-xs font-bold">{channel.name?.slice(0, 1)}</span>}
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+
+          <nav className="grid gap-3 text-sm font-bold uppercase text-neutral-200 sm:grid-cols-2 md:grid-cols-3">
+            {links.map((item) => (
+              <a key={item["@name"]} href={item.link || "#"} className="hover:text-white hover:underline">
+                {item.label || item.name}
+              </a>
+            ))}
+          </nav>
         </div>
-        <div className="flex items-center gap-4">
-          <button className="px-5 py-2 rounded-full border border-gray-500 text-white hover:bg-gray-700 transition">
-            LOG IN
-          </button>
-          <button className="px-5 py-2 rounded-full bg-red-600 text-white hover:bg-red-500 transition">SIGN UP</button>
+
+        {!!appLinks.length && (
+          <div className="flex flex-wrap items-center py-3">
+            {appLinks.map((item) => {
+              const icon = getAssetUrl(getPath(item.icon));
+
+              return (
+                <a
+                  key={item["@name"]}
+                  href={item.link || "#"}
+                  className="flex items-center gap-3 rounded text-sm font-bold uppercase hover:bg-white/10"
+                >
+                  {icon && <Image src={icon} alt="" className="w-full h-12 object-contain" width={100} height={100} />}
+                  {item.label || item.name}
+                </a>
+              );
+            })}
+          </div>
+        )}
+
+        <div className="flex flex-col gap-4 pt-6 text-xs text-neutral-400 md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-wrap gap-x-4 gap-y-2 uppercase">
+            {legalLinks.map((item) => (
+              <a key={item["@name"]} href={item.link || "#"} className="hover:text-white hover:underline">
+                {item.label || item.name}
+              </a>
+            ))}
+          </div>
+          {footer?.copyright && <p>{footer.copyright}</p>}
         </div>
       </div>
     </footer>

@@ -1,3 +1,32 @@
 datasource:
   workspace: headers
   autoCreate: true
+
+model:
+  nodeType: mgnl:header
+  properties:
+    - name: name
+      type: string
+    - name: logo
+      type: asset
+    - name: sponsors
+      type: sponsor
+      multiple: true
+    - name: navLinks
+      type: navLink
+      multiple: true
+  subModels:
+    sponsor:
+      properties:
+        - name: name
+          type: string
+        - name: logo
+          type: asset
+        - name: link
+          type: string
+    navLink:
+      properties:
+        - name: label
+          type: string
+        - name: link
+          type: string

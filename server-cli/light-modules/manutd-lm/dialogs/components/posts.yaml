@@ -1,0 +1,16 @@
+label: Posts (News Listing)
+form:
+  properties:
+    title:
+      label: Title
+      $type: textField
+    posts:
+      label: posts
+      $type: linkField
+      datasource:
+        $type: jcrDatasource
+        workspace: posts
+      chooser:
+        workbenchChooser:
+          appName: posts-app
+      textInputAllowed: false
