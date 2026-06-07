@@ -1,4 +1,4 @@
-import { environments } from "../environments/environments";
+import { environments } from "../environments";
 
 async function getPage(path: string, search = ""): Promise<PageType> {
   const url = `${environments.mgnlPages}${path}${search}`;
@@ -7,25 +7,6 @@ async function getPage(path: string, search = ""): Promise<PageType> {
   });
   if (!res.ok) {
     throw new Error(`Failed to fetch page at ${url}`);
-  }
-
-  return await res.json();
-}
-
-async function getTemplateAnnotations(
-  path: string,
-  search = "",
-): Promise<TemplateAnnotationsType> {
-  const url = `${environments.mgnlTemplates}${path}${search}`;
-  const res = await fetch(url, {
-    headers: {
-      // Can anonymous get the areas data tho?
-      cookie: "JSESSIONID:",
-    },
-    cache: "no-store",
-  });
-  if (!res.ok) {
-    throw new Error(`Failed to fetch template annotations at ${url}`);
   }
 
   return await res.json();
@@ -43,4 +24,4 @@ async function getFooter(path: string, search = ""): Promise<FooterType> {
   return await res.json();
 }
 
-export { getPage, getTemplateAnnotations, getFooter };
+export { getPage, getFooter };

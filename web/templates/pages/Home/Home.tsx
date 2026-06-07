@@ -1,17 +1,17 @@
-import { getFooter } from "@/lib/magnolia/contents";
-import { FooterArea } from "@/templates/components/FooterArea";
+import { path, getFooter } from "@/lib/magnolia";
+import { FooterArea } from "@/templates/areas/FooterArea";
 import { EditableArea } from "@magnolia/react-editor";
 
 type HomePageProps = PageType & {
   content: ContentType;
   header?: string;
-  footer?: string;
+  footer?: string | ContentType;
   customHeader: ContentType;
   customFooter: ContentType;
 };
 
 const HomePage = async ({ content, footer, customHeader, customFooter }: HomePageProps) => {
-  const footerComponent = footer ? await getFooter(footer) : undefined;
+  const footerComponent = footer ? await getFooter(path(footer)) : undefined;
 
   return (
     <>
