@@ -12,5 +12,5 @@ declare type FooterType = NodeType & {
 };
 
 declare type FooterProps = {
-  footer: FooterType;
+  path?: string;
 };

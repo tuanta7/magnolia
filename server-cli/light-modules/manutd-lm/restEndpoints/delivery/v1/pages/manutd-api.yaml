@@ -18,7 +18,7 @@ childNodeTypes:
 
 references:
   - name: footerReference
-    propertyName: footer
+    propertyName: defaultFooter
     referenceResolver:
       $type: jcrReferenceResolver
       targetWorkspace: footers

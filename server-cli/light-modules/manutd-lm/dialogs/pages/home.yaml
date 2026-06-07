@@ -6,7 +6,7 @@ form:
       - name: tabMain
         fields:
           - name: title
-          - name: footer
+          - name: defaultFooter
       - name: tabMeta
         fields:
           - name: meta
@@ -18,7 +18,7 @@ form:
       label: Code
       $type: codeField
       language: html
-    footer: # This one is for the reference a footer data, not a component, so there is no mgnl:template
+    defaultFooter: # This one is for the reference a footer data, not a component, so there is no mgnl:template
       $type: linkField
       label: Footer
       datasource:

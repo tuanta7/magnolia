@@ -1,4 +1,4 @@
-declare type ContentType = NodeType & {
+declare type AreaType = NodeType & {
   "0": NodeType;
 };
 

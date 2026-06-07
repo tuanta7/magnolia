@@ -1,7 +1,7 @@
 import { EditableArea } from "@magnolia/react-editor";
 
 type PlayersPageProps = PageType & {
-  content: ContentType;
+  content: AreaType;
   header?: string;
   footer?: string;
 };

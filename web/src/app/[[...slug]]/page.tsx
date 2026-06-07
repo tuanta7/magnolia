@@ -13,16 +13,14 @@ type Props = {
 
 export default async function Page({ params, searchParams }: Props) {
   const { slug } = await params;
-  const path = "/manutd/".concat(slug ? slug.join("/") : "");
-  const searchMap = await searchParams;
-  const searchSring =
-    Object.keys(searchMap).length > 0 ? `?${new URLSearchParams(searchMap as Record<string, string>).toString()}` : "";
+  let path = "/manutd/".concat(slug ? slug.join("/") : "");
 
-  const ctx = EditorContextService.getMagnoliaContext(
-    path + searchSring,
-    environments.mgnlSitePath,
-    environments.mgnlLanguages,
-  );
+  const searchMap = await searchParams;
+  if (Object.keys(searchMap).length > 0) {
+    path = path.concat("?", new URLSearchParams(searchMap as Record<string, string>).toString());
+  }
+
+  const ctx = EditorContextService.getMagnoliaContext(path, environments.mgnlSitePath, environments.mgnlLanguages);
 
   const page = await getPage(path, ctx.search);
   const templateAnnotations = ctx.isMagnolia ? await getTemplateAnnotations(path, ctx.search) : undefined;

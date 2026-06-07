@@ -1,12 +1,16 @@
 import { Footer } from "@/templates/components";
 import { EditableArea } from "@magnolia/react-editor";
 
-// FooterArea is a custom Magnolia area with a default option.
-export const FooterArea = ({ content, footer }: { content: NodeType; footer?: FooterType }) => {
-  if (!footer) {
-    return <EditableArea content={content} />;
+type FooterAreaProps = {
+  content: NodeType;
+  customPath?: string;
+};
+
+// FooterArea is a magnolia area with a fallback option for footer.
+export const FooterArea = ({ content, customPath }: FooterAreaProps) => {
+  if (customPath) {
+    return <EditableArea content={content} customView={() => <Footer path={customPath} />} />;
   }
 
-  const FooterView = () => <Footer footer={footer} />;
-  return <EditableArea content={content} customView={FooterView} />;
+  return <EditableArea content={content} />;
 };

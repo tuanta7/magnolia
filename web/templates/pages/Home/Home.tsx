@@ -1,26 +1,23 @@
-import { path, getFooter } from "@/lib/magnolia";
+import { Fragment } from "react";
+import { path } from "@/lib/magnolia";
 import { FooterArea } from "@/templates/areas/FooterArea";
 import { EditableArea } from "@magnolia/react-editor";
 
 type HomePageProps = PageType & {
-  content: ContentType;
-  header?: string;
-  footer?: string | ContentType;
-  customHeader: ContentType;
-  customFooter: ContentType;
+  content: AreaType;
+  header: AreaType;
+  footer: AreaType;
+  defaultHeader?: string | NodeType;
+  defaultFooter?: string | NodeType;
 };
 
-const HomePage = async ({ content, footer, customHeader, customFooter }: HomePageProps) => {
-  const footerComponent = footer ? await getFooter(path(footer)) : undefined;
-
+const HomePage = async ({ content, header, footer, defaultFooter }: HomePageProps) => {
   return (
-    <>
-      <header>{customHeader && <EditableArea content={customHeader} />}</header>
+    <Fragment>
+      <header>{header && <EditableArea content={header} />}</header>
       <main className="min-h-[90vh] p-6 border-t">{content && <EditableArea content={content} />}</main>
-      <footer>
-        <FooterArea content={customFooter} footer={footerComponent} />
-      </footer>
-    </>
+      <FooterArea content={footer} customPath={path(defaultFooter)} />
+    </Fragment>
   );
 };
 

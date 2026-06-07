@@ -3,7 +3,7 @@ import { EditableArea } from "@magnolia/react-editor";
 type FlexLayoutProps = {
   margin?: string;
   padding: NodeType;
-  content: ContentType; // Replace with the actual type of content
+  content: AreaType; // Replace with the actual type of content
 };
 
 const FlexLayout = (props: FlexLayoutProps) => {
