@@ -13,7 +13,7 @@ type Props = {
 
 export default async function Page({ params, searchParams }: Props) {
   const { slug } = await params;
-  let path = "/manutd/".concat(slug ? slug.join("/") : "");
+  let path = slug ? slug.join("/") : "";
 
   const searchMap = await searchParams;
   if (Object.keys(searchMap).length > 0) {

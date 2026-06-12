@@ -16,5 +16,5 @@ Magnolia CMS and its ecosystem.
 
 ```sh
 # Get page with Vietnamese contents
-http://localhost:8080/magnoliaAuthor/.rest/delivery/v1/pages/manutd-api/manutd?lang=vi
+http://localhost:8080/magnoliaAuthor/.rest/delivery/v1/pages/manutd?lang=vi
 ```
