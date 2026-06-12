@@ -1,0 +1,13 @@
+class: info.magnolia.rest.delivery.jcr.v2.JcrDeliveryEndpointDefinition
+workspace: faqs
+depth: 2
+limit: 10
+referenceDepth: 2
+nodeTypes:
+  - mgnl:faq
+references:
+  - name: categoryReference
+    propertyName: category
+    referenceResolver:
+      $type: jcrReferenceResolver
+      targetWorkspace: category

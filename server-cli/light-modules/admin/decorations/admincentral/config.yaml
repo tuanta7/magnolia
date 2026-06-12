@@ -6,7 +6,7 @@ layout:
         - name: pages-app
         - name: dam-app
         - name: stories
-        - name: books-app
+        - name: faqs-app
     - name: football
       label: Football
       apps:

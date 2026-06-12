@@ -1,0 +1,15 @@
+!content-type:faq
+name: faqs-app
+label: FAQs
+permissions:
+  roles:
+    developer: developer
+subApps:
+  detail:
+    label: New FAQ
+    form:
+      properties:
+        - name: question
+          $type: richTextField
+        - name: answer
+          $type: richTextField
