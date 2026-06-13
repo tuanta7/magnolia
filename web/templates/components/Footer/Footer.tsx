@@ -19,7 +19,7 @@ const Footer = async ({ path, footer: footerReference }: FooterProps) => {
             {logo && (
               <Image
                 src={logo}
-                alt={footer?.name || "Manchester United"}
+                alt={footer?.name || ""}
                 className="h-16 w-auto object-contain"
                 height={100}
                 width={100}

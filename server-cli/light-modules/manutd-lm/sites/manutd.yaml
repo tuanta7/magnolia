@@ -16,6 +16,8 @@ templates:
         id: manutd-lm:pages/players
       news:
         id: manutd-lm:pages/news
+      faqs:
+        id: faqs:pages/faq
 
 mappings:
   manutd:

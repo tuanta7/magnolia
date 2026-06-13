@@ -33,7 +33,7 @@ export const environments = {
   mgnlLanguages: MGNL_LANGUAGES.split(" "),
   mgnlAssets: `${MGNL_URL}${MGNL_API_ASSETS}`,
   mgnlTemplates: `${MGNL_URL}${MGNL_API_TEMPLATES}`,
-  mgnlPages: `${MGNL_URL}${MGNL_API_PAGES}${MGNL_SITE_PATH}`,
+  mgnlPages: `${MGNL_URL}${MGNL_API_PAGES}`,
   mgnlFooters: `${MGNL_URL}${MGNL_API_FOOTERS}`,
   mgnlPosts: `${MGNL_DELIVERY_BASE}/posts`,
   mgnlHeaders: `${MGNL_DELIVERY_BASE}/headers`,

@@ -3,4 +3,4 @@ export { default as Code } from "./Code";
 export { default as Header } from "./Header";
 export { default as Posts } from "./Posts";
 export { default as Partners } from "./Partners";
-export { FlexLayout, TwoColumnsLayout } from "./Layouts";
+export { FlexLayout, GridLayout } from "./Layouts";

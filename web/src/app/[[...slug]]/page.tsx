@@ -2,7 +2,7 @@ import { EditorContextService } from "@magnolia/frontend-helpers-base";
 import { getPage, getTemplateAnnotations } from "@/lib/magnolia";
 import { environments } from "@/lib/environments/environments";
 import { EditablePage } from "@magnolia/react-editor";
-import config from "@/magnolia.config";
+import config from "@/templates/config";
 
 type Props = {
   params: Promise<{
@@ -14,6 +14,11 @@ type Props = {
 export default async function Page({ params, searchParams }: Props) {
   const { slug } = await params;
   let path = slug ? slug.join("/") : "";
+  console.log(path);
+
+  if (!path.startsWith(environments.mgnlSitePath)) {
+    path = environments.mgnlSitePath + path;
+  }
 
   const searchMap = await searchParams;
   if (Object.keys(searchMap).length > 0) {
@@ -23,6 +28,7 @@ export default async function Page({ params, searchParams }: Props) {
   const ctx = EditorContextService.getMagnoliaContext(path, environments.mgnlSitePath, environments.mgnlLanguages);
 
   const page = await getPage(path, ctx.search);
+  console.log(path);
   const templateAnnotations = ctx.isMagnolia ? await getTemplateAnnotations(path, ctx.search) : undefined;
 
   console.log("Rendering MagnoliaPage with context:", ctx);
