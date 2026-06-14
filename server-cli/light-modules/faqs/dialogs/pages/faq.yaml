@@ -1,1 +1,14 @@
 label: FAQ
+form:
+  properties:
+    title:
+      label: Title
+      $type: textField
+    faqRootPath:
+      label: FAQ Root Path
+      $type: linkField
+      datasource:
+        $type: jcrDatasource
+        workspace: faqs
+      textInputAllowed: false
+      converterClass: info.magnolia.ui.editor.converter.JcrNodeToPathConverter

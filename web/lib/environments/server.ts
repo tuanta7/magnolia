@@ -1,11 +1,12 @@
 function getRequiredEnv(name: string, rawValue: string | undefined): string {
   const value = rawValue?.trim();
 
-  if (!value) {
+  // only throw error on server
+  if (typeof window === "undefined" && !value) {
     throw new Error(`Missing required environment variable: ${name}`);
   }
 
-  return value;
+  return value || "";
 }
 
 function getBooleanEnv(rawValue: string | undefined): boolean {

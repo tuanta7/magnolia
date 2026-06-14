@@ -1,36 +1,73 @@
 import { EditorContextService } from "@magnolia/frontend-helpers-base";
-import { getPage, getTemplateAnnotations } from "@/lib/magnolia";
-import { environments } from "@/lib/environments/environments";
 import { EditablePage } from "@magnolia/react-editor";
+
+import { environments } from "@/lib/environments";
+import { getPage, getTemplateAnnotations } from "@/lib/magnolia";
 import config from "@/templates/config";
+
+type SearchParams = Record<string, string | string[] | undefined>;
 
 type Props = {
   params: Promise<{
-    slug: string[];
+    slug?: string[];
   }>;
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
+  searchParams: Promise<SearchParams>;
 };
 
+function buildMagnoliaPath(slug: string[] = []) {
+  const relativePath = slug.join("/");
+  if (!relativePath) {
+    return environments.mgnlSitePath;
+  }
+
+  const normalizedPath = relativePath.startsWith("/") ? relativePath : `/${relativePath}`;
+
+  if (normalizedPath === environments.mgnlSitePath || normalizedPath.startsWith(`${environments.mgnlSitePath}/`)) {
+    return normalizedPath;
+  }
+
+  return `${environments.mgnlSitePath}${normalizedPath}`.replace(/\/+/g, "/");
+}
+
+function buildQueryString(searchMap: SearchParams) {
+  const params = new URLSearchParams();
+
+  Object.entries(searchMap).forEach(([key, value]) => {
+    if (value === undefined) {
+      return;
+    }
+
+    if (Array.isArray(value)) {
+      value.forEach((entry) => params.append(key, entry));
+      return;
+    }
+
+    params.set(key, value);
+  });
+
+  const queryString = params.toString();
+  return queryString ? `?${queryString}` : "";
+}
+
 export default async function Page({ params, searchParams }: Props) {
-  const { slug } = await params;
-  let path = slug ? slug.join("/") : "";
-  console.log(path);
+  const [{ slug }, searchMap] = await Promise.all([params, searchParams]);
+  const path = buildMagnoliaPath(slug);
+  const queryString = buildQueryString(searchMap);
+  const requestPath = queryString ? path.concat(queryString) : path;
 
-  if (!path.startsWith(environments.mgnlSitePath)) {
-    path = environments.mgnlSitePath + path;
-  }
+  const ctx = EditorContextService.getMagnoliaContext(
+    requestPath,
+    environments.mgnlSitePath,
+    environments.mgnlLanguages,
+  );
 
-  const searchMap = await searchParams;
-  if (Object.keys(searchMap).length > 0) {
-    path = path.concat("?", new URLSearchParams(searchMap as Record<string, string>).toString());
-  }
+  const nodePath = ctx.nodePath ?? path;
+  const [page, templateAnnotations] = await Promise.all([
+    getPage(nodePath, ctx.search),
+    ctx.isMagnolia ? getTemplateAnnotations(nodePath, ctx.search) : Promise.resolve(undefined),
+  ]);
 
-  const ctx = EditorContextService.getMagnoliaContext(path, environments.mgnlSitePath, environments.mgnlLanguages);
-
-  const page = await getPage(path, ctx.search);
-  console.log(path);
-  const templateAnnotations = ctx.isMagnolia ? await getTemplateAnnotations(path, ctx.search) : undefined;
-
+  console.log("Node path:", nodePath);
   console.log("Rendering MagnoliaPage with context:", ctx);
   console.log("Page content:", page);
   console.log("Template annotations:", templateAnnotations);

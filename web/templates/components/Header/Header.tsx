@@ -1,6 +1,7 @@
+import Link from "next/link";
+
 import { getAssetUrl, getHeader, path as getPath } from "@/lib/magnolia";
 import { nodeList } from "@/lib/magnolia/nodeList";
-import Link from "next/link";
 
 function assetUrl(asset?: MagnoliaAsset | string) {
   if (!asset) {

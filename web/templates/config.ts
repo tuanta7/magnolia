@@ -1,6 +1,7 @@
 import { MagnoliaConfig } from "@magnolia/react-editor";
-import { Footer, Code, Header, Partners, Posts, FlexLayout, GridLayout } from "@/templates/components";
-import { HomePage, PlayersPage, NewsPage } from "@/templates/pages";
+
+import { Code, FlexLayout, Footer, GridLayout, Header, Partners, Posts } from "@/templates/components";
+import { HomePage, NewsPage, PlayersPage } from "@/templates/pages";
 
 const config: MagnoliaConfig = {
   componentMappings: {

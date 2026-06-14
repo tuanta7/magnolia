@@ -1,0 +1,7 @@
+label: FAQs Top Questions
+form:
+  properties:
+    faqsRootCategory:
+      label: Root Category
+      $type: textField
+      required: true

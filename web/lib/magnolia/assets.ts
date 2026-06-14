@@ -1,4 +1,4 @@
-import { environments } from "../environments/environments";
+import { environments } from "../environments";
 
 export function getAssetUrl(path: string) {
   if (path.startsWith("/")) {

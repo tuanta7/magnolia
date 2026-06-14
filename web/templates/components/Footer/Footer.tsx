@@ -1,6 +1,7 @@
+import Image from "next/image";
+
 import { getAssetUrl, getFooter, path as getPath } from "@/lib/magnolia";
 import { nodeList } from "@/lib/magnolia/nodeList";
-import Image from "next/image";
 
 const Footer = async ({ path, footer: footerReference }: FooterProps) => {
   const footerPath = path || getPath(footerReference);

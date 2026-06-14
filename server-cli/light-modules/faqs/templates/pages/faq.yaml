@@ -10,12 +10,12 @@ areas:
     title: FAQ
     availableComponents:
       faqsTopQuestions:
-        id: faqs:components/faqsCategoryDetails
+        id: faqs:components/faqsTopQuestions
       faqsCategoryDetails:
         id: faqs:components/faqsCategoryDetails
-      faqsSideNav:
-        id: faqs:components/faqsSideNav
-      faqsSearchInput:
-        id: faqs:components/faqsSearchInput
-      faqsSearchResult:
-        id: faqs:components/faqsSearchResult
+      # faqsSideNav:
+      #   id: faqs:components/faqsSideNav
+      # faqsSearchInput:
+      #   id: faqs:components/faqsSearchInput
+      # faqsSearchResult:
+      #   id: faqs:components/faqsSearchResult
