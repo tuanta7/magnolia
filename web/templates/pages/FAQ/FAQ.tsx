@@ -1,11 +1,11 @@
 import { EditableArea } from "@magnolia/react-editor";
 
 type FAQPageProps = PageType & {
-  content?: AreaType;
+  contents?: AreaType;
 };
 
-const FAQPage = ({ content }: FAQPageProps) => {
-  return <>{content && <EditableArea content={content} />}</>;
+const FAQPage = ({ contents }: FAQPageProps) => {
+  return <>{contents && <EditableArea content={contents} />}</>;
 };
 
 export default FAQPage;

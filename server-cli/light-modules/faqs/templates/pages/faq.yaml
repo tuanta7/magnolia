@@ -6,16 +6,16 @@ class: info.magnolia.rendering.spa.renderer.SiteAwareSpaRenderableDefinition
 
 areas:
   contents:
-    type: single
-    title: FAQ
+    type: list
+    title: FAQ Contents
     availableComponents:
       faqsTopQuestions:
         id: faqs:components/faqsTopQuestions
       faqsCategoryDetails:
         id: faqs:components/faqsCategoryDetails
-      # faqsSideNav:
-      #   id: faqs:components/faqsSideNav
-      # faqsSearchInput:
-      #   id: faqs:components/faqsSearchInput
-      # faqsSearchResult:
-      #   id: faqs:components/faqsSearchResult
+      faqsSideNav:
+        id: faqs:components/faqsSideNav
+      faqsSearchInput:
+        id: faqs:components/faqsSearchInput
+      faqsSearchResult:
+        id: faqs:components/faqsSearchResult

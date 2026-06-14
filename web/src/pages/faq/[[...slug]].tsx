@@ -6,6 +6,7 @@ import type { ParsedUrlQuery } from "querystring";
 
 import { environments } from "@/lib/environments";
 import { getPage, getTemplateAnnotations } from "@/lib/magnolia";
+import { Placeholder } from "@/templates/components";
 import { FAQPage as FAQPageTemplate } from "@/templates/pages";
 
 type Params = {
@@ -97,6 +98,8 @@ export default function FAQPage({
         config={{
           componentMappings: {
             "faqs:pages/faq": FAQPageTemplate,
+            "faqs:components/faqsTopQuestions": Placeholder,
+            "faqs:components/faqsCategoryDetails": Placeholder,
           },
         }}
         magnoliaContext={magnoliaContext}

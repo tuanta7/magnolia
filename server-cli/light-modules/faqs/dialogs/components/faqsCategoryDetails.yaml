@@ -3,5 +3,9 @@ form:
   properties:
     faqsRootCategory:
       label: Root Category
-      $type: textField
+      $type: linkField
       required: true
+      datasource:
+        $type: jcrDatasource
+        workspace: faqs
+      textInputAllowed: false
