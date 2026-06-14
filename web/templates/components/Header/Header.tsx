@@ -1,14 +1,11 @@
 import Link from "next/link";
 
-import { getAssetUrl, getHeader, path as getPath } from "@/lib/magnolia";
-import { nodeList } from "@/lib/magnolia/nodeList";
+import { resolveAssetURL } from "@/lib/magnolia/assets";
+import { nodeList, resolvePath } from "@/lib/magnolia/helpers";
+import { getHeader } from "@/lib/magnolia/template";
 
-function assetUrl(asset?: MagnoliaAsset | string) {
-  if (!asset) {
-    return undefined;
-  }
-
-  return getAssetUrl(typeof asset === "string" ? asset : asset["@path"]);
+function assetUrl(asset?: NodeType | string) {
+  return resolveAssetURL(resolvePath(asset));
 }
 
 function linkProps(link?: string) {
@@ -20,7 +17,7 @@ function linkProps(link?: string) {
 }
 
 const Header = async ({ header }: HeaderProps) => {
-  const headerPath = getPath(header);
+  const headerPath = resolvePath(header);
   const data = headerPath ? await getHeader(headerPath) : undefined;
   const sponsors = nodeList<HeaderSponsorType>(data?.sponsors);
   const navLinks = nodeList<HeaderNavLinkType>(data?.navLinks);

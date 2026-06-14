@@ -1,11 +1,10 @@
-import { getAssetUrl } from "@/lib/magnolia";
+import Image from "next/image";
 
-function assetUrl(asset?: MagnoliaAsset | string) {
-  if (!asset) {
-    return undefined;
-  }
+import { resolveAssetURL } from "@/lib/magnolia/assets";
+import { resolvePath } from "@/lib/magnolia/helpers";
 
-  return getAssetUrl(typeof asset === "string" ? asset : asset["@path"]);
+function assetUrl(asset?: NodeType | string) {
+  return resolveAssetURL(resolvePath(asset));
 }
 
 function formatDate(value?: unknown) {
@@ -41,8 +40,10 @@ const Post = ({ post }: { post: PostType }) => {
   return (
     <article className="overflow-hidden rounded bg-white shadow-sm">
       <a href={post.redirectLink || "#"} {...externalLinkProps(post.redirectLink)} className="block">
-        <div className="aspect-[16/9] bg-neutral-300">
-          {thumbnail && <img src={thumbnail} alt="" className="h-full w-full object-cover" />}
+        <div className="aspect-video bg-neutral-300">
+          {thumbnail && (
+            <Image src={thumbnail} alt="" className="h-full w-full object-cover" height={900} width={1600} />
+          )}
         </div>
         <div className="p-4">
           <div className="flex items-center justify-between gap-3 text-xs font-bold uppercase text-neutral-500">

@@ -1,8 +1,8 @@
 label: FAQs Category Details
 form:
   properties:
-    faqsRootCategory:
-      label: Root Category
+    faqsRootFolder:
+      label: RootFolder
       $type: linkField
       required: true
       datasource:

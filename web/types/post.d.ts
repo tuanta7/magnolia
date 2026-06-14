@@ -1,9 +1,5 @@
 declare type MagnoliaNodeList<T extends NodeType> = NodeType & Record<string, T>;
 
-declare type MagnoliaAsset = NodeType & {
-  link?: string;
-};
-
 declare type HeaderSponsorType = NodeType & {
   name?: string;
   logo?: MagnoliaAsset;

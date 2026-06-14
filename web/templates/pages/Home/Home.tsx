@@ -1,7 +1,8 @@
-import { Fragment } from "react";
-import { path } from "@/lib/magnolia";
-import { FooterArea } from "@/templates/areas/FooterArea";
 import { EditableArea } from "@magnolia/react-editor";
+import { Fragment } from "react";
+
+import { resolvePath } from "@/lib/magnolia/helpers";
+import { FooterArea } from "@/templates/areas/FooterArea";
 import { HeaderArea } from "@/templates/areas/HeaderArea";
 
 type HomePageProps = PageType & {
@@ -15,9 +16,9 @@ type HomePageProps = PageType & {
 const HomePage = async ({ content, header, footer, defaultHeader, defaultFooter }: HomePageProps) => {
   return (
     <Fragment>
-      <HeaderArea content={header} customPath={path(defaultHeader)} />
+      <HeaderArea content={header} customPath={resolvePath(defaultHeader)} />
       <main className="min-h-[90vh] p-6 border-t">{content && <EditableArea content={content} />}</main>
-      <FooterArea content={footer} customPath={path(defaultFooter)} />
+      <FooterArea content={footer} customPath={resolvePath(defaultFooter)} />
     </Fragment>
   );
 };

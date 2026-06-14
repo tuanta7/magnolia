@@ -1,6 +1,6 @@
 import { environments } from "../environments";
 
-export function getAssetUrl(path: string) {
+export function resolveAssetURL(path: string) {
   if (path.startsWith("/")) {
     return `${environments.mgnlAssets}${path}`;
   }

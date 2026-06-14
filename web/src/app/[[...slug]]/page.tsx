@@ -2,7 +2,7 @@ import { EditorContextService } from "@magnolia/frontend-helpers-base";
 import { EditablePage } from "@magnolia/react-editor";
 
 import { environments } from "@/lib/environments";
-import { getPage, getTemplateAnnotations } from "@/lib/magnolia";
+import { getPage, getTemplateAnnotations } from "@/lib/magnolia/template";
 import config from "@/templates/config";
 
 type SearchParams = Record<string, string | string[] | undefined>;

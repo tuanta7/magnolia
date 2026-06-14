@@ -1,11 +1,11 @@
-label: FAQs Top Questions
+label: FAQs Side Navigation
 form:
   properties:
-    faqsRootFolder:
-      label: Root Folder
+    faqsRootCategory:
+      label: Root Category
       $type: linkField
       required: true
       datasource:
         $type: jcrDatasource
-        workspace: faqs
+        workspace: category
       textInputAllowed: false

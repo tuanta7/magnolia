@@ -1,13 +1,11 @@
-import { getAssetUrl, getPosts } from "@/lib/magnolia";
-import { nodeList } from "@/lib/magnolia/nodeList";
+import { resolveAssetURL } from "@/lib/magnolia/assets";
+import { nodeList, resolvePath } from "@/lib/magnolia/helpers";
+import { getPosts } from "@/lib/magnolia/template";
+
 import Post from "./Post";
 
-function assetUrl(asset?: MagnoliaAsset | string) {
-  if (!asset) {
-    return undefined;
-  }
-
-  return getAssetUrl(typeof asset === "string" ? asset : asset["@path"]);
+function assetUrl(asset?: NodeType | string) {
+  return resolveAssetURL(resolvePath(asset));
 }
 
 const PostList = async ({ title, subtitle, heroImage, navLinks }: PostListProps) => {

@@ -1,12 +1,13 @@
 import Image from "next/image";
 
-import { getAssetUrl, getFooter, path as getPath } from "@/lib/magnolia";
-import { nodeList } from "@/lib/magnolia/nodeList";
+import { resolveAssetURL } from "@/lib/magnolia/assets";
+import { nodeList, resolvePath } from "@/lib/magnolia/helpers";
+import { getFooter } from "@/lib/magnolia/template";
 
 const Footer = async ({ path, footer: footerReference }: FooterProps) => {
-  const footerPath = path || getPath(footerReference);
+  const footerPath = resolvePath(footerReference);
   const footer = footerPath ? await getFooter(footerPath) : undefined;
-  const logo = getAssetUrl(getPath(footer?.logo));
+  const logo = resolveAssetURL(resolvePath(footer?.logo));
   const channels = nodeList<FooterChannelType>(footer?.channels);
   const links = nodeList<FooterLinkType>(footer?.links);
   const legalLinks = nodeList<FooterLinkType>(footer?.legalLinks);
@@ -28,7 +29,7 @@ const Footer = async ({ path, footer: footerReference }: FooterProps) => {
             )}
             <div className="mt-5 flex flex-wrap gap-3">
               {channels.map((channel) => {
-                const icon = getAssetUrl(getPath(channel.icon));
+                const icon = resolveAssetURL(getPath(channel.icon));
 
                 return (
                   <a
@@ -57,7 +58,7 @@ const Footer = async ({ path, footer: footerReference }: FooterProps) => {
         {!!appLinks.length && (
           <div className="flex flex-wrap items-center py-3">
             {appLinks.map((item) => {
-              const icon = getAssetUrl(getPath(item.icon));
+              const icon = resolveAssetURL(getPath(item.icon));
 
               return (
                 <a

@@ -5,8 +5,9 @@ import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import type { ParsedUrlQuery } from "querystring";
 
 import { environments } from "@/lib/environments";
-import { getPage, getTemplateAnnotations } from "@/lib/magnolia";
-import { Placeholder } from "@/templates/components";
+import { getPage, getTemplateAnnotations } from "@/lib/magnolia/template";
+import { FAQTopQuestions, Placeholder } from "@/templates/components";
+import { hydrateFAQTopQuestions } from "@/templates/components/FAQ/FAQTopQuestions";
 import { FAQPage as FAQPageTemplate } from "@/templates/pages";
 
 type Params = {
@@ -70,6 +71,7 @@ export const getServerSideProps: GetServerSideProps<FaqPageProps, Params> = asyn
 
   const nodePath = ctx.nodePath ?? path;
   const page = await getPage(nodePath, ctx.search);
+  await hydrateFAQTopQuestions(page, ctx.search);
   const templateAnnotations = ctx.isMagnolia ? await getTemplateAnnotations(nodePath, ctx.search) : undefined;
 
   console.log("Node path:", nodePath, ctx.search);
@@ -98,8 +100,9 @@ export default function FAQPage({
         config={{
           componentMappings: {
             "faqs:pages/faq": FAQPageTemplate,
-            "faqs:components/faqsTopQuestions": Placeholder,
+            "faqs:components/faqsTopQuestions": FAQTopQuestions,
             "faqs:components/faqsCategoryDetails": Placeholder,
+            "faqs:components/faqsSideNav": Placeholder,
           },
         }}
         magnoliaContext={magnoliaContext}
