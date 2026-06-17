@@ -4,13 +4,13 @@ import { Header } from "@/templates/components";
 
 type HeaderAreaProps = {
   content: NodeType;
-  customPath?: string;
+  custom?: NodeType | string;
 };
 
 // HeaderArea is a magnolia area with a fallback option for footer.
-export const HeaderArea = ({ content, customPath }: HeaderAreaProps) => {
-  if (customPath) {
-    return <EditableArea content={content} customView={() => <Header path={customPath} />} />;
+export const HeaderArea = ({ content, custom }: HeaderAreaProps) => {
+  if (custom) {
+    return <EditableArea content={content} customView={() => <Header header={custom} />} />;
   }
 
   return <EditableArea content={content} />;

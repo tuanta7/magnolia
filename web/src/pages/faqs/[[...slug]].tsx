@@ -10,7 +10,7 @@ import { FAQTopQuestions, Placeholder } from "@/templates/components";
 import { hydrateFAQTopQuestions } from "@/templates/components/FAQ/FAQTopQuestions";
 import { FAQPage as FAQPageTemplate } from "@/templates/pages";
 
-import { buildMagnoliaPath, buildQueryString } from "./helpers";
+import { buildMagnoliaPath, buildQueryString } from "@/lib/faqs/helpers";
 
 export type Params = {
   slug?: string[];
@@ -36,7 +36,17 @@ export const getServerSideProps: GetServerSideProps<FaqPageProps, Params> = asyn
   );
 
   const nodePath = ctx.nodePath ?? path;
-  const page = await getPage(nodePath, ctx.search);
+  let page: PageType;
+
+  try {
+    page = await getPage(nodePath, ctx.search);
+  } catch (error) {
+    console.error("Failed to fetch Magnolia FAQ page:", error);
+    return {
+      notFound: true,
+    };
+  }
+
   await hydrateFAQTopQuestions(page, ctx.search);
   const templateAnnotations = ctx.isMagnolia ? await getTemplateAnnotations(nodePath, ctx.search) : undefined;
 

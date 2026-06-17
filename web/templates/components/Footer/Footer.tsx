@@ -4,7 +4,7 @@ import { resolveAssetURL } from "@/lib/magnolia/assets";
 import { nodeList, resolvePath } from "@/lib/magnolia/helpers";
 import { getFooter } from "@/lib/magnolia/template";
 
-const Footer = async ({ path, footer: footerReference }: FooterProps) => {
+const Footer = async ({ footer: footerReference }: FooterProps) => {
   const footerPath = resolvePath(footerReference);
   const footer = footerPath ? await getFooter(footerPath) : undefined;
   const logo = resolveAssetURL(resolvePath(footer?.logo));

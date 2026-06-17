@@ -17,9 +17,9 @@ type HomePageProps = PageType & {
 const HomePage = async ({ content, header, footer, defaultHeader, defaultFooter }: HomePageProps) => {
   return (
     <Fragment>
-      <HeaderArea content={header} customPath={resolvePath(defaultHeader)} />
+      <HeaderArea content={header} custom={resolvePath(defaultHeader)} />
       <main className="min-h-[90vh] p-6 border-t">{content && <EditableArea content={content} />}</main>
-      <FooterArea content={footer} customPath={resolvePath(defaultFooter)} />
+      <FooterArea content={footer} custom={resolvePath(defaultFooter)} />
     </Fragment>
   );
 };

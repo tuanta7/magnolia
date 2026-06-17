@@ -55,7 +55,6 @@ declare type PostListProps = NodeType & {
 };
 
 declare type HeaderProps = {
-  path?: string;
   header?: string | NodeType;
 };
 

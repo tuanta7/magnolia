@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { resolveAssetURL } from "@/lib/magnolia/assets";
@@ -16,12 +17,13 @@ function linkProps(link?: string) {
   return link.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {};
 }
 
-const Header = async ({ header }: HeaderProps) => {
-  const headerPath = resolvePath(header);
-  const data = headerPath ? await getHeader(headerPath) : undefined;
-  const sponsors = nodeList<HeaderSponsorType>(data?.sponsors);
-  const navLinks = nodeList<HeaderNavLinkType>(data?.navLinks);
-  const logo = assetUrl(data?.logo);
+const Header = async ({ header: headerReference }: HeaderProps) => {
+  const headerPath = resolvePath(headerReference);
+  const header = headerPath ? await getHeader(headerPath) : undefined;
+
+  const sponsors = nodeList<HeaderSponsorType>(header?.sponsors);
+  const navLinks = nodeList<HeaderNavLinkType>(header?.navLinks);
+  const logo = assetUrl(header?.logo);
 
   return (
     <header className="bg-[#c70101] text-white">
@@ -38,7 +40,13 @@ const Header = async ({ header }: HeaderProps) => {
                 className="flex min-w-fit items-center gap-2 text-xs font-semibold uppercase tracking-normal text-neutral-700"
               >
                 {sponsorLogo && (
-                  <img src={sponsorLogo} alt={sponsor.name || ""} className="h-7 w-auto object-contain" />
+                  <Image
+                    src={sponsorLogo}
+                    alt={sponsor.name || ""}
+                    className="h-7 w-auto object-contain"
+                    width={100}
+                    height={100}
+                  />
                 )}
                 {!sponsorLogo && sponsor.name}
               </a>
@@ -48,7 +56,15 @@ const Header = async ({ header }: HeaderProps) => {
       </div>
       <div className="mx-auto flex max-w-7xl items-center gap-6 px-4 py-4">
         <Link href="/en" className="flex min-w-fit items-center gap-3">
-          {logo && <img src={logo} alt={data?.name || "Manchester United"} className="h-14 w-auto object-contain" />}
+          {logo && (
+            <Image
+              src={logo}
+              alt={header?.name || "Manchester United"}
+              className="h-14 w-auto object-contain"
+              width={100}
+              height={100}
+            />
+          )}
           <span className="text-lg font-bold uppercase tracking-normal">Manchester United</span>
         </Link>
         <nav className="flex flex-1 items-center gap-5 overflow-x-auto text-sm font-bold uppercase">

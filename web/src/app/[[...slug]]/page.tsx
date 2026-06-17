@@ -1,9 +1,13 @@
+import { notFound } from "next/navigation";
+
 import { EditorContextService } from "@magnolia/frontend-helpers-base";
 import { EditablePage } from "@magnolia/react-editor";
 
 import { environments } from "@/lib/environments";
 import { getPage, getTemplateAnnotations } from "@/lib/magnolia/template";
 import config from "@/templates/config";
+
+import { buildMagnoliaPath, buildQueryString } from "./helpers";
 
 type SearchParams = Record<string, string | string[] | undefined>;
 
@@ -13,41 +17,6 @@ type Props = {
   }>;
   searchParams: Promise<SearchParams>;
 };
-
-function buildMagnoliaPath(slug: string[] = []) {
-  const relativePath = slug.join("/");
-  if (!relativePath) {
-    return environments.mgnlSitePath;
-  }
-
-  const normalizedPath = relativePath.startsWith("/") ? relativePath : `/${relativePath}`;
-
-  if (normalizedPath === environments.mgnlSitePath || normalizedPath.startsWith(`${environments.mgnlSitePath}/`)) {
-    return normalizedPath;
-  }
-
-  return `${environments.mgnlSitePath}${normalizedPath}`.replace(/\/+/g, "/");
-}
-
-function buildQueryString(searchMap: SearchParams) {
-  const params = new URLSearchParams();
-
-  Object.entries(searchMap).forEach(([key, value]) => {
-    if (value === undefined) {
-      return;
-    }
-
-    if (Array.isArray(value)) {
-      value.forEach((entry) => params.append(key, entry));
-      return;
-    }
-
-    params.set(key, value);
-  });
-
-  const queryString = params.toString();
-  return queryString ? `?${queryString}` : "";
-}
 
 export default async function Page({ params, searchParams }: Props) {
   const [{ slug }, searchMap] = await Promise.all([params, searchParams]);
@@ -64,10 +33,16 @@ export default async function Page({ params, searchParams }: Props) {
   );
 
   const nodePath = ctx.nodePath ?? path;
-  const [page, templateAnnotations] = await Promise.all([
-    getPage(nodePath, ctx.search),
-    ctx.isMagnolia ? getTemplateAnnotations(nodePath, ctx.search) : Promise.resolve(undefined),
-  ]);
+  let page: PageType;
+
+  try {
+    page = await getPage(nodePath, ctx.search);
+  } catch (error) {
+    console.error("Failed to fetch Magnolia page:", error);
+    notFound();
+  }
+
+  const templateAnnotations = ctx.isMagnolia ? await getTemplateAnnotations(nodePath, ctx.search) : undefined;
 
   console.log("Node path:", nodePath);
   console.log("Rendering MagnoliaPage with context:", ctx);
