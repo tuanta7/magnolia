@@ -55,6 +55,8 @@ export default async function Page({ params, searchParams }: Props) {
   const queryString = buildQueryString(searchMap);
   const requestPath = queryString ? path.concat(queryString) : path;
 
+  console.log("Request path", requestPath);
+
   const ctx = EditorContextService.getMagnoliaContext(
     requestPath,
     environments.mgnlSitePath,

@@ -1,5 +1,6 @@
-import { Header } from "@/templates/components";
 import { EditableArea } from "@magnolia/react-editor";
+
+import { Header } from "@/templates/components";
 
 type HeaderAreaProps = {
   content: NodeType;

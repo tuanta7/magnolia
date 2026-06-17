@@ -1,5 +1,6 @@
-import { EditableArea } from "@magnolia/react-editor";
 import { Fragment } from "react";
+
+import { EditableArea } from "@magnolia/react-editor";
 
 import { resolvePath } from "@/lib/magnolia/helpers";
 import { FooterArea } from "@/templates/areas/FooterArea";

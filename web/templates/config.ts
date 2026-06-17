@@ -1,7 +1,17 @@
 import { MagnoliaConfig } from "@magnolia/react-editor";
 
-import { Code, FlexLayout, Footer, GridLayout, Header, Partners, Posts } from "@/templates/components";
-import { HomePage, NewsPage, PlayersPage } from "@/templates/pages";
+import {
+  Code,
+  FAQTopQuestions,
+  FlexLayout,
+  Footer,
+  GridLayout,
+  Header,
+  Partners,
+  Placeholder,
+  Posts,
+} from "@/templates/components";
+import { FAQPage, HomePage, NewsPage, PlayersPage } from "@/templates/pages";
 
 const config: MagnoliaConfig = {
   componentMappings: {
@@ -17,6 +27,11 @@ const config: MagnoliaConfig = {
     "manutd-lm:components/header": Header,
     "manutd-lm:components/posts": Posts,
     "manutd-lm:components/partners": Partners,
+
+    "faqs:pages/faq": FAQPage,
+    "faqs:components/faqsTopQuestions": FAQTopQuestions,
+    "faqs:components/faqsCategoryDetails": Placeholder,
+    "faqs:components/faqsSideNav": Placeholder,
   },
 };
 

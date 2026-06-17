@@ -29,7 +29,7 @@ const Footer = async ({ path, footer: footerReference }: FooterProps) => {
             )}
             <div className="mt-5 flex flex-wrap gap-3">
               {channels.map((channel) => {
-                const icon = resolveAssetURL(getPath(channel.icon));
+                const icon = resolveAssetURL(resolvePath(channel.icon));
 
                 return (
                   <a
@@ -58,7 +58,7 @@ const Footer = async ({ path, footer: footerReference }: FooterProps) => {
         {!!appLinks.length && (
           <div className="flex flex-wrap items-center py-3">
             {appLinks.map((item) => {
-              const icon = resolveAssetURL(getPath(item.icon));
+              const icon = resolveAssetURL(resolvePath(item.icon));
 
               return (
                 <a

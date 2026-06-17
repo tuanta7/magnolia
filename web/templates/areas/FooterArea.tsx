@@ -1,5 +1,6 @@
-import { Footer } from "@/templates/components";
 import { EditableArea } from "@magnolia/react-editor";
+
+import { Footer } from "@/templates/components";
 
 type FooterAreaProps = {
   content: NodeType;
