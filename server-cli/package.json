@@ -23,6 +23,7 @@
 		"@magnolia/cli-create-page-plugin": "^1.4.0",
 		"@magnolia/cli-create-rest-endpoint-plugin": "^2.0.1",
 		"@magnolia/cli-create-virtual-uri-plugin": "^1.0.2",
+		"@magnolia/cli-jumpstart-plugin": "1.2.0",
 		"@magnolia/cli-start-plugin": "^1.0.4"
 	}
 }
