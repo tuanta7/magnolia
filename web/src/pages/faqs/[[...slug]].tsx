@@ -5,12 +5,11 @@ import { EditorContextService } from "@magnolia/frontend-helpers-base";
 import { EditablePage } from "@magnolia/react-editor";
 
 import { environments } from "@/lib/environments";
+import { buildMagnoliaPath, buildQueryString } from "@/lib/faqs/helpers";
 import { getPage, getTemplateAnnotations } from "@/lib/magnolia/template";
 import { FAQTopQuestions, Placeholder } from "@/templates/components";
 import { hydrateFAQTopQuestions } from "@/templates/components/FAQ/FAQTopQuestions";
 import { FAQPage as FAQPageTemplate } from "@/templates/pages";
-
-import { buildMagnoliaPath, buildQueryString } from "@/lib/faqs/helpers";
 
 export type Params = {
   slug?: string[];
@@ -47,13 +46,14 @@ export const getServerSideProps: GetServerSideProps<FaqPageProps, Params> = asyn
     };
   }
 
-  await hydrateFAQTopQuestions(page, ctx.search);
   const templateAnnotations = ctx.isMagnolia ? await getTemplateAnnotations(nodePath, ctx.search) : undefined;
 
   console.log("Node path:", nodePath, ctx.search);
   console.log("Rendering MagnoliaPage with context:", ctx);
   console.log("Page content:", page);
   console.log("Template annotations:", templateAnnotations);
+
+  await hydrateFAQTopQuestions(page);
 
   return {
     props: {
