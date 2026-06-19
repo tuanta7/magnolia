@@ -24,7 +24,7 @@ async function getPage(path: string, search = ""): Promise<PageType> {
 }
 
 async function getFAQs(path = "", search = ""): Promise<FAQListType> {
-  const url = `${environments.mgnlFaqs}${normalizedPath(path)}${search}`;
+  const url = `${environments.mgnlFaqs}${normalizedPath(path)}?${search}`;
   const res = await fetch(url, {
     cache: "no-store",
   });

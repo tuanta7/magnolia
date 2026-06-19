@@ -14,6 +14,12 @@ model:
     - name: answer
       label: Answer
       type: string
+    - name: highlights
+      label: Highlight
+      type: Boolean
+    - name: mostAsked
+      label: Most asked
+      type: Boolean
     - name: categories
       label: Categories
       type: reference:category

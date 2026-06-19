@@ -13,3 +13,11 @@ subApps:
           $type: richTextField
         - name: answer
           $type: richTextField
+        - name: highlights
+          $type: checkBoxField
+          label: Highlight
+          buttonLabel: Mark as highlighted
+        - name: mostAsked
+          $type: checkBoxField
+          label: Most asked
+          buttonLabel: Mark as most asked

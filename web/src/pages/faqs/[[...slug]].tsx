@@ -7,7 +7,7 @@ import { EditablePage } from "@magnolia/react-editor";
 import { environments } from "@/lib/environments";
 import { buildMagnoliaPath, buildQueryString } from "@/lib/faqs/helpers";
 import { getPage, getTemplateAnnotations } from "@/lib/magnolia/template";
-import { FAQTopQuestions, Placeholder } from "@/templates/components";
+import { FAQSearchInput, FAQTopQuestions, Placeholder } from "@/templates/components";
 import { hydrateFAQTopQuestions } from "@/templates/components/FAQ/FAQTopQuestions";
 import { FAQPage as FAQPageTemplate } from "@/templates/pages";
 
@@ -77,6 +77,7 @@ export default function FAQPage({
           componentMappings: {
             "faqs:pages/faq": FAQPageTemplate,
             "faqs:components/faqsTopQuestions": FAQTopQuestions,
+            "faqs:components/faqsSearchInput": FAQSearchInput,
             "faqs:components/faqsCategoryDetails": Placeholder,
             "faqs:components/faqsSideNav": Placeholder,
           },

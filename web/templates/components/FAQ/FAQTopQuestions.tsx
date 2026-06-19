@@ -1,3 +1,5 @@
+import { decode } from "html-entities";
+
 import { resolvePath } from "@/lib/magnolia/helpers";
 import { getFAQs } from "@/lib/magnolia/template";
 
@@ -16,29 +18,19 @@ export async function hydrateFAQTopQuestions(node: NodeType) {
   if (componentNode["mgnl:template"] === COMPONENT_ID) {
     const rootPath = resolvePath(componentNode.faqsRootFolder);
 
-    componentNode.faqsHighlights = rootPath
-      ? (
-          await getFAQs(
-            rootPath,
-            new URLSearchParams({
-              limit: "20",
-              highlights: "true",
-            }).toString(),
-          )
-        ).results
-      : [];
+    if (!rootPath) {
+      componentNode.faqsHighlights = [];
+      componentNode.faqsMostAsked = [];
+    } else {
+      const [highlights, mostAsked] = await Promise.all([
+        getFAQs("", new URLSearchParams({ limit: "20", highlights: "true", "@ancestor": rootPath }).toString()),
+        getFAQs("", new URLSearchParams({ limit: "20", mostAsked: "true", "@ancestor": rootPath }).toString()),
+      ]);
 
-    componentNode.faqsMostAsked = rootPath
-      ? (
-          await getFAQs(
-            rootPath,
-            new URLSearchParams({
-              limit: "20",
-              mostAsked: "true",
-            }).toString(),
-          )
-        ).results
-      : [];
+      // console.log("FAQs Repsonse", highlights, mostAsked);
+      componentNode.faqsHighlights = highlights?.results ?? [];
+      componentNode.faqsMostAsked = mostAsked?.results ?? [];
+    }
   }
 
   await Promise.all(
@@ -52,19 +44,27 @@ export async function hydrateFAQTopQuestions(node: NodeType) {
   );
 }
 
-const FAQTopQuestions = ({ faqsMostAsked, faqsHighlights }: ComponentType & FAQTopQuestionsNode) => {
-  if (!faqsMostAsked?.length) {
-    return <div>No questions found</div>;
+const FAQQuestion = ({ faq }: { faq: FAQType }) => {
+  if (faq.question) {
+    return <span className="[&_p]:inline" dangerouslySetInnerHTML={{ __html: decode(faq.question) }} />;
   }
 
+  return faq.name ?? faq["@name"];
+};
+
+const FAQTopQuestions = ({ faqsMostAsked, faqsHighlights }: ComponentType & FAQTopQuestionsNode) => {
   return (
     <section className="mx-auto w-full max-w-3xl px-4 py-8">
       <h2 className="mb-4 text-2xl font-semibold">Most Asked</h2>
       <div className="space-y-3">
         {faqsMostAsked.map((faq) => (
           <details key={faq["@id"] ?? faq["@path"]} className="border-b border-neutral-200 py-3">
-            <summary className="cursor-pointer font-medium">{faq.question ?? faq.name ?? faq["@name"]}</summary>
-            {faq.answer && <p className="mt-2 text-neutral-700">{faq.answer}</p>}
+            <summary className="cursor-pointer font-medium">
+              <FAQQuestion faq={faq} />
+            </summary>
+            {faq.answer && (
+              <div className="mt-2 text-neutral-700" dangerouslySetInnerHTML={{ __html: decode(faq.answer) }} />
+            )}
           </details>
         ))}
       </div>
@@ -72,8 +72,12 @@ const FAQTopQuestions = ({ faqsMostAsked, faqsHighlights }: ComponentType & FAQT
       <div className="space-y-3">
         {faqsHighlights.map((faq) => (
           <details key={faq["@id"] ?? faq["@path"]} className="border-b border-neutral-200 py-3">
-            <summary className="cursor-pointer font-medium">{faq.question ?? faq.name ?? faq["@name"]}</summary>
-            {faq.answer && <p className="mt-2 text-neutral-700">{faq.answer}</p>}
+            <summary className="cursor-pointer font-medium">
+              <FAQQuestion faq={faq} />
+            </summary>
+            {faq.answer && (
+              <div className="mt-2 text-neutral-700" dangerouslySetInnerHTML={{ __html: decode(faq.answer) }} />
+            )}
           </details>
         ))}
       </div>

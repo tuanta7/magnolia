@@ -2,6 +2,8 @@ declare type FAQType = NodeType & {
   name?: string;
   question?: string;
   answer?: string;
+  highlights?: boolean;
+  mostAsked?: boolean;
   categories?: unknown;
 };
 

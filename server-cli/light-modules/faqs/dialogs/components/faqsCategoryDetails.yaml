@@ -2,7 +2,7 @@ label: FAQs Category Details
 form:
   properties:
     faqsRootFolder:
-      label: RootFolder
+      label: Root Folder
       $type: linkField
       required: true
       datasource:

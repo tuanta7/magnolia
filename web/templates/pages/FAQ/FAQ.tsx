@@ -1,3 +1,5 @@
+import { Fragment } from "react";
+
 import { EditableArea } from "@magnolia/react-editor";
 
 type FAQPageProps = PageType & {
@@ -5,7 +7,13 @@ type FAQPageProps = PageType & {
 };
 
 const FAQPage = ({ contents }: FAQPageProps) => {
-  return <>{contents && <EditableArea content={contents} />}</>;
+  return (
+    <Fragment>
+      <header>Header</header>
+      {contents && <EditableArea content={contents} />}
+      <footer>Footer</footer>
+    </Fragment>
+  );
 };
 
 export default FAQPage;
