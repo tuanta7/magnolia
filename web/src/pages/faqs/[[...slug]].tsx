@@ -7,7 +7,16 @@ import { EditablePage } from "@magnolia/react-editor";
 import { environments } from "@/lib/environments";
 import { buildMagnoliaPath, buildQueryString } from "@/lib/faqs/helpers";
 import { getPage, getTemplateAnnotations } from "@/lib/magnolia/template";
-import { FAQSearchInput, FAQTopQuestions, Placeholder } from "@/templates/components";
+import {
+  FAQCategoryDetails,
+  FAQSearchInput,
+  FAQSearchResult,
+  FAQTopQuestions,
+  Placeholder,
+} from "@/templates/components";
+import { hydrateFAQCategoryDetails } from "@/templates/components/FAQ/FAQCategoryDetails";
+import { hydrateFAQSearchInput } from "@/templates/components/FAQ/FAQSearchInput";
+import { hydrateFAQSearchResult } from "@/templates/components/FAQ/FAQSearchResult";
 import { hydrateFAQTopQuestions } from "@/templates/components/FAQ/FAQTopQuestions";
 import { FAQPage as FAQPageTemplate } from "@/templates/pages";
 
@@ -22,8 +31,11 @@ type FaqPageProps = {
 };
 
 export const getServerSideProps: GetServerSideProps<FaqPageProps, Params> = async (context) => {
-  const path = buildMagnoliaPath(context.params?.slug, environments.mgnlSitePath);
-  const queryString = buildQueryString(context.query);
+  // ignore category in /faqs/:category
+  const path = buildMagnoliaPath(environments.mgnlSitePath);
+  const { q: rawSearchQuery, ...magnoliaQuery } = context.query;
+  const searchQuery = (Array.isArray(rawSearchQuery) ? rawSearchQuery[0] : rawSearchQuery)?.trim().slice(0, 200) ?? "";
+  const queryString = buildQueryString(magnoliaQuery);
   const requestPath = queryString ? path.concat(queryString) : path;
 
   console.log("Request path", requestPath);
@@ -53,7 +65,17 @@ export const getServerSideProps: GetServerSideProps<FaqPageProps, Params> = asyn
   console.log("Page content:", page);
   console.log("Template annotations:", templateAnnotations);
 
-  await hydrateFAQTopQuestions(page);
+  const category = context.params?.slug?.at(0);
+  console.log("Category:", category);
+  hydrateFAQSearchInput(page, searchQuery);
+
+  if (category) {
+    await hydrateFAQCategoryDetails(page, category);
+  } else if (searchQuery) {
+    await hydrateFAQSearchResult(page, searchQuery);
+  } else {
+    await hydrateFAQTopQuestions(page);
+  }
 
   return {
     props: {
@@ -78,7 +100,8 @@ export default function FAQPage({
             "faqs:pages/faq": FAQPageTemplate,
             "faqs:components/faqsTopQuestions": FAQTopQuestions,
             "faqs:components/faqsSearchInput": FAQSearchInput,
-            "faqs:components/faqsCategoryDetails": Placeholder,
+            "faqs:components/faqsSearchResult": FAQSearchResult,
+            "faqs:components/faqsCategoryDetails": FAQCategoryDetails,
             "faqs:components/faqsSideNav": Placeholder,
           },
         }}

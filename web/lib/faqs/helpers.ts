@@ -1,8 +1,7 @@
 import type { ParsedUrlQuery } from "querystring";
 
-export function buildMagnoliaPath(slug: string[] | undefined, mgnlSitePath: string) {
-  // const relativePath = ["faqs", ...(slug ?? [])].join("/");
-  const relativePath = "faqs";
+export function buildMagnoliaPath(mgnlSitePath: string) {
+  const relativePath = "faqs"; // fixed on CMS
   if (!relativePath) {
     return mgnlSitePath;
   }

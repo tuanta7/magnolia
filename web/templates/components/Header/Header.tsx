@@ -31,7 +31,6 @@ const Header = async ({ header: headerReference }: HeaderProps) => {
         <div className="mx-auto flex max-w-7xl items-center justify-end gap-6 overflow-x-auto">
           {sponsors.map((sponsor) => {
             const sponsorLogo = assetUrl(sponsor.logo);
-
             return (
               <a
                 key={sponsor["@name"]}
@@ -61,13 +60,12 @@ const Header = async ({ header: headerReference }: HeaderProps) => {
               src={logo}
               alt={header?.name || "Manchester United"}
               className="h-14 w-auto object-contain"
-              width={100}
-              height={100}
+              width={1000}
+              height={1000}
             />
           )}
-          <span className="text-lg font-bold uppercase tracking-normal">Manchester United</span>
         </Link>
-        <nav className="flex flex-1 items-center gap-5 overflow-x-auto text-sm font-bold uppercase">
+        <nav className="flex flex-1 items-center gap-5 overflow-x-auto  font-bold uppercase">
           {navLinks.map((item) => (
             <a key={item["@name"]} href={item.link || "#"} className="min-w-fit hover:underline">
               {item.label}
