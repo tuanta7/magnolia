@@ -17,7 +17,5 @@ areas:
         id: faqs:components/faqsCategoryDetails
       faqsSideNav:
         id: faqs:components/faqsSideNav
-      faqsSearchInput:
-        id: faqs:components/faqsSearchInput
-      faqsSearchResult:
-        id: faqs:components/faqsSearchResult
+      faqsSearch:
+        id: faqs:components/faqsSearch

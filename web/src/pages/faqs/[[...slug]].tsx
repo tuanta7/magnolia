@@ -7,17 +7,9 @@ import { EditablePage } from "@magnolia/react-editor";
 import { environments } from "@/lib/environments";
 import { buildMagnoliaPath, buildQueryString } from "@/lib/faqs/helpers";
 import { getPage, getTemplateAnnotations } from "@/lib/magnolia/template";
-import {
-  FAQCategoryDetails,
-  FAQSearchInput,
-  FAQSearchResult,
-  FAQSideNav,
-  FAQTopQuestions,
-  GridLayout,
-} from "@/templates/components";
+import { FAQCategoryDetails, FAQSearch, FAQSideNav, FAQTopQuestions, GridLayout } from "@/templates/components";
 import { hydrateFAQCategoryDetails } from "@/templates/components/FAQ/FAQCategoryDetails";
-import { hydrateFAQSearchInput } from "@/templates/components/FAQ/FAQSearchInput";
-import { hydrateFAQSearchResult } from "@/templates/components/FAQ/FAQSearchResult";
+import { hydrateFAQSearch } from "@/templates/components/FAQ/FAQSearch";
 import { hydrateFAQSideNav } from "@/templates/components/FAQ/FAQSideNav";
 import { hydrateFAQTopQuestions } from "@/templates/components/FAQ/FAQTopQuestions";
 import { FAQPage as FAQPageTemplate } from "@/templates/pages";
@@ -69,14 +61,11 @@ export const getServerSideProps: GetServerSideProps<FaqPageProps, Params> = asyn
 
   const category = context.params?.slug?.filter(Boolean).join("/");
   console.log("Category:", category);
-  hydrateFAQSearchInput(page, searchQuery);
-  await hydrateFAQSideNav(page, category ?? "");
+  await Promise.all([hydrateFAQSearch(page, searchQuery), hydrateFAQSideNav(page, category ?? "")]);
 
   if (category) {
     await hydrateFAQCategoryDetails(page, category);
-  } else if (searchQuery) {
-    await hydrateFAQSearchResult(page, searchQuery);
-  } else {
+  } else if (!searchQuery) {
     await hydrateFAQTopQuestions(page);
   }
 
@@ -103,8 +92,9 @@ export default function FAQPage({
             "faqs:pages/faq": FAQPageTemplate,
             "manutd-lm:components/layouts/gridLayout": GridLayout,
             "faqs:components/faqsTopQuestions": FAQTopQuestions,
-            "faqs:components/faqsSearchInput": FAQSearchInput,
-            "faqs:components/faqsSearchResult": FAQSearchResult,
+            "faqs:components/faqsSearch": FAQSearch,
+            "faqs:components/faqsSearchInput": FAQSearch,
+            "faqs:components/faqsSearchResult": LegacyFAQSearchResult,
             "faqs:components/faqsCategoryDetails": FAQCategoryDetails,
             "faqs:components/faqsSideNav": FAQSideNav,
           },
@@ -115,3 +105,5 @@ export default function FAQPage({
     </div>
   );
 }
+
+const LegacyFAQSearchResult = () => null;

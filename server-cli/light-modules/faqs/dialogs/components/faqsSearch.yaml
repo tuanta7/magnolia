@@ -1,6 +1,6 @@
-label: FAQs Search input
+label: FAQ Search
 form:
   properties:
     placeholder:
-      label: Placeholder
+      label: Search Placeholder
       $type: textField

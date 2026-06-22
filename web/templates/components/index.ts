@@ -5,4 +5,4 @@ export { default as Posts } from "./Posts";
 export { default as Partners } from "./Partners";
 export { default as Placeholder } from "./Placeholder";
 export { FlexLayout, GridLayout } from "./Layouts";
-export { FAQTopQuestions, FAQSearchInput, FAQSearchResult, FAQCategoryDetails, FAQSideNav } from "./FAQ";
+export { FAQTopQuestions, FAQSearch, FAQCategoryDetails, FAQSideNav } from "./FAQ";
