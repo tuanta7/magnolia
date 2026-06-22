@@ -65,7 +65,7 @@ const FAQSideNav = ({ category, subCategories }: ComponentType & FAQSideNavNode)
   const parentHref = parentSegments.length ? categoryHref(parentSegments) : FAQ_ROUTE;
 
   return (
-    <nav className="bg-neutral-100 px-4 pt-8" aria-label="FAQ categories">
+    <nav className="bg-neutral-100 px-4 py-10 sm:py-14" aria-label="FAQ categories">
       <div className="mx-auto w-full max-w-5xl rounded-2xl border border-neutral-200 bg-white p-3 shadow-sm sm:p-4">
         {category && (
           <>
@@ -85,11 +85,7 @@ const FAQSideNav = ({ category, subCategories }: ComponentType & FAQSideNavNode)
         )}
 
         {subCategories.length > 0 && (
-          <ul
-            className={
-              category ? "mt-2 grid gap-1 sm:grid-cols-2 lg:grid-cols-3" : "grid gap-1 sm:grid-cols-2 lg:grid-cols-3"
-            }
-          >
+          <ul className={category ? "mt-2 grid gap-1" : "grid gap-1"}>
             {subCategories.map((subCategory) => {
               const name = subCategory["@name"];
 

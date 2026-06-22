@@ -21,3 +21,65 @@ form:
           - name: four
             label: "4"
             value: "4"
+    columnRatio:
+      label: Two-column proportions
+      description: Applied when the grid has two columns.
+      $type: radioButtonGroupField
+      defaultValue: leftSidebar
+      datasource:
+        $type: optionListDatasource
+        options:
+          - name: leftSidebar
+            label: Left sidebar 1:2
+            value: leftSidebar
+          - name: leftSidebarNarrow
+            label: Left sidebar 1:3
+            value: leftSidebarNarrow
+          - name: equal
+            label: Equal 1:1
+            value: equal
+          - name: rightSidebar
+            label: Right sidebar 2:1
+            value: rightSidebar
+    gap:
+      label: Column gap
+      $type: radioButtonGroupField
+      defaultValue: medium
+      layout: horizontal
+      datasource:
+        $type: optionListDatasource
+        options:
+          - name: none
+            label: None
+            value: none
+          - name: small
+            label: Small
+            value: small
+          - name: medium
+            label: Medium
+            value: medium
+          - name: large
+            label: Large
+            value: large
+    maxWidth:
+      label: Maximum width
+      $type: radioButtonGroupField
+      defaultValue: wide
+      layout: horizontal
+      datasource:
+        $type: optionListDatasource
+        options:
+          - name: content
+            label: Content
+            value: content
+          - name: wide
+            label: Wide
+            value: wide
+          - name: full
+            label: Full width
+            value: full
+    stickyFirstColumn:
+      label: Sticky first column
+      $type: checkBoxField
+      defaultValue: true
+      buttonLabel: Keep the first column visible while scrolling
