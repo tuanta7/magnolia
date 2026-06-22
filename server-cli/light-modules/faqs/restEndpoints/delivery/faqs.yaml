@@ -5,9 +5,9 @@ limit: 10
 referenceDepth: 2
 nodeTypes:
   - mgnl:faq
-references:
-  - name: categoryReference
-    propertyName: category
-    referenceResolver:
-      $type: jcrReferenceResolver
-      targetWorkspace: category
+# references:
+#   - name: categoryReference
+#     propertyName: categories
+#     referenceResolver:
+#       $type: jcrReferenceResolver
+#       targetWorkspace: category

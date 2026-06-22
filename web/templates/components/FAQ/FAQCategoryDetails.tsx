@@ -1,7 +1,7 @@
 import { decode } from "html-entities";
 
 import { resolvePath } from "@/lib/magnolia/helpers";
-import { getFAQs } from "@/lib/magnolia/template";
+import { getCategory, getFAQs } from "@/lib/magnolia/template";
 
 import FAQTopQuestions from "./FAQTopQuestions";
 
@@ -16,7 +16,7 @@ type FAQCategoryDetailsNode = NodeType & {
 };
 
 // for pages-router rendering
-export async function hydrateFAQCategoryDetails(node: NodeType, category: string) {
+export async function hydrateFAQCategoryDetails(node: NodeType, category: string, categoryId = "") {
   const componentNode = node as FAQCategoryDetailsNode;
 
   if (componentNode["mgnl:template"] === COMPONENT_ID) {
@@ -27,11 +27,16 @@ export async function hydrateFAQCategoryDetails(node: NodeType, category: string
       componentNode.faqs = [];
     } else {
       try {
+        if (!categoryId) {
+          const c = await getCategory(category);
+          categoryId = c["@id"] || "";
+        }
+
         const faqsByCategory = await getFAQs(
           "",
           new URLSearchParams({
             limit: "20",
-            category: category,
+            categories: categoryId,
             "@ancestor": rootPath,
           }).toString(),
         );
@@ -57,6 +62,8 @@ export async function hydrateFAQCategoryDetails(node: NodeType, category: string
 
 const FAQCategoryDetails = (props: ComponentType & FAQCategoryDetailsNode) => {
   const { category, faqs } = props;
+
+  console.log("Details: ", category, faqs);
 
   if (!category || !faqs) {
     console.log("FAQ Top Questions");
