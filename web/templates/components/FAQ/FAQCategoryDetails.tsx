@@ -26,14 +26,13 @@ export async function hydrateFAQCategoryDetails(node: NodeType, category: string
     if (!rootPath) {
       componentNode.faqs = [];
     } else {
-      const categoryPath = `${rootPath.replace(/\/+$/, "")}/${category}`;
-
       try {
         const faqsByCategory = await getFAQs(
           "",
           new URLSearchParams({
             limit: "20",
-            "@ancestor": categoryPath,
+            category: category,
+            "@ancestor": rootPath,
           }).toString(),
         );
 

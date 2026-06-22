@@ -11,12 +11,13 @@ import {
   FAQCategoryDetails,
   FAQSearchInput,
   FAQSearchResult,
+  FAQSideNav,
   FAQTopQuestions,
-  Placeholder,
 } from "@/templates/components";
 import { hydrateFAQCategoryDetails } from "@/templates/components/FAQ/FAQCategoryDetails";
 import { hydrateFAQSearchInput } from "@/templates/components/FAQ/FAQSearchInput";
 import { hydrateFAQSearchResult } from "@/templates/components/FAQ/FAQSearchResult";
+import { hydrateFAQSideNav } from "@/templates/components/FAQ/FAQSideNav";
 import { hydrateFAQTopQuestions } from "@/templates/components/FAQ/FAQTopQuestions";
 import { FAQPage as FAQPageTemplate } from "@/templates/pages";
 
@@ -65,9 +66,10 @@ export const getServerSideProps: GetServerSideProps<FaqPageProps, Params> = asyn
   console.log("Page content:", page);
   console.log("Template annotations:", templateAnnotations);
 
-  const category = context.params?.slug?.at(0);
+  const category = context.params?.slug?.filter(Boolean).join("/");
   console.log("Category:", category);
   hydrateFAQSearchInput(page, searchQuery);
+  await hydrateFAQSideNav(page, category ?? "");
 
   if (category) {
     await hydrateFAQCategoryDetails(page, category);
@@ -102,7 +104,7 @@ export default function FAQPage({
             "faqs:components/faqsSearchInput": FAQSearchInput,
             "faqs:components/faqsSearchResult": FAQSearchResult,
             "faqs:components/faqsCategoryDetails": FAQCategoryDetails,
-            "faqs:components/faqsSideNav": Placeholder,
+            "faqs:components/faqsSideNav": FAQSideNav,
           },
         }}
         magnoliaContext={magnoliaContext}

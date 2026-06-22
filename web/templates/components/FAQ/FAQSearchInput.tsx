@@ -1,4 +1,7 @@
-import FAQSearchResult from "./FAQSearchResult";
+"use client";
+
+import { usePathname, useRouter } from "next/navigation";
+import type { FormEvent } from "react";
 
 const COMPONENT_ID = "faqs:components/faqsSearchInput";
 
@@ -24,10 +27,22 @@ export function hydrateFAQSearchInput(node: NodeType, searchQuery: string) {
 }
 
 const FAQSearchInput = ({ placeholder, searchQuery }: ComponentType & FAQSearchInputNode) => {
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    const query = new FormData(event.currentTarget).get("q");
+
+    if (typeof query === "string" && !query.trim()) {
+      event.preventDefault();
+      router.replace(pathname ?? "/faqs");
+    }
+  };
+
   return (
     <section className="bg-neutral-100 px-4 py-6 sm:py-8">
       <div className="mx-auto w-full max-w-5xl">
-        <form action="/faqs" method="get" role="search">
+        <form action="/faqs" method="get" role="search" onSubmit={handleSubmit}>
           <label className="block">
             <span className="sr-only">Search frequently asked questions</span>
             <span className="group flex items-center gap-3 rounded-2xl border border-neutral-200 bg-white px-4 shadow-sm transition focus-within:border-[#c70101] focus-within:ring-4 focus-within:ring-red-100 hover:border-neutral-300 hover:shadow-md sm:px-5">
@@ -49,7 +64,6 @@ const FAQSearchInput = ({ placeholder, searchQuery }: ComponentType & FAQSearchI
                 maxLength={200}
                 className="min-w-0 flex-1 bg-transparent py-4 text-base font-medium text-neutral-950 outline-none placeholder:font-normal placeholder:text-neutral-500 sm:py-5 sm:text-lg [&::-webkit-search-cancel-button]:appearance-none"
                 placeholder={placeholder || "Search FAQs"}
-                required
               />
               <button
                 type="submit"
