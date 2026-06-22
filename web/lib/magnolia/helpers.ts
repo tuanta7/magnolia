@@ -19,5 +19,8 @@ export function nodeList<T extends NodeType>(collection?: NodeType & Record<stri
 }
 
 export const normalizedPath = (path: string): string => {
+  if (!path.startsWith("/")) {
+    path = "/" + path;
+  }
   return path === "/" ? "" : path;
 };

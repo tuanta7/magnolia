@@ -13,3 +13,8 @@ declare type FAQListType = {
   limit: number;
   results: FAQType[];
 };
+
+declare type CategoryType = NodeType & {
+  displayName: string;
+  level: string;
+};

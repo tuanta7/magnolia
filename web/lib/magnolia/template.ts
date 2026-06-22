@@ -24,12 +24,24 @@ async function getPage(path: string, search = ""): Promise<PageType> {
 }
 
 async function getFAQs(path = "", search = ""): Promise<FAQListType> {
-  const url = `${environments.mgnlFaqs}${normalizedPath(path)}?${search}`;
+  const url = `${environments.mgnlFAQs}${normalizedPath(path)}?${search}`;
   const res = await fetch(url, {
     cache: "no-store",
   });
   if (!res.ok) {
     throw new Error(`Failed to fetch FAQs at ${url}`);
+  }
+
+  return await res.json();
+}
+
+async function getSubCategories(category: string): Promise<CategoryType[]> {
+  const url = `${environments.mgnlFAQsCategories}${normalizedPath(category)}/@nodes`;
+  const res = await fetch(url, {
+    cache: "no-store",
+  });
+  if (!res.ok) {
+    throw new Error(`Failed to fetch Sub Categories for ${category} at ${url}`);
   }
 
   return await res.json();
@@ -83,4 +95,4 @@ async function getPosts(search = ""): Promise<PostsType> {
   return await res.json();
 }
 
-export { getTemplateAnnotations, getPage, getFooter, getHeader, getPartners, getPosts, getFAQs };
+export { getTemplateAnnotations, getPage, getFooter, getHeader, getPartners, getPosts, getFAQs, getSubCategories };

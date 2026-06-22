@@ -33,6 +33,7 @@ export const environments = {
   mgnlHeaders: `${MGNL_URL}/.rest/delivery/v1/headers`,
   mgnlFooters: `${MGNL_URL}/.rest/delivery/v1/footers`,
   mgnlPartners: `${MGNL_URL}/.rest/delivery/v1/partners`,
-  mgnlFaqs: `${MGNL_URL}/.rest/delivery/faqs`,
+  mgnlFAQs: `${MGNL_URL}/.rest/delivery/faqs`,
+  mgnlFAQsCategories: `${MGNL_URL}/.rest/delivery/categories`,
   mgnlAssets: `${MGNL_URL}/dam`,
 };

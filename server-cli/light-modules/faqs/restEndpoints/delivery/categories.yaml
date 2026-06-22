@@ -1,0 +1,7 @@
+class: info.magnolia.rest.delivery.jcr.v2.JcrDeliveryEndpointDefinition
+workspace: category
+rootPath: /faqs
+limit: 20
+depth: 1
+nodeTypes:
+  - mgnl:category
