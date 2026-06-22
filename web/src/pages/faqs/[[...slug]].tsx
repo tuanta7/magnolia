@@ -13,6 +13,7 @@ import {
   FAQSearchResult,
   FAQSideNav,
   FAQTopQuestions,
+  GridLayout,
 } from "@/templates/components";
 import { hydrateFAQCategoryDetails } from "@/templates/components/FAQ/FAQCategoryDetails";
 import { hydrateFAQSearchInput } from "@/templates/components/FAQ/FAQSearchInput";
@@ -100,6 +101,7 @@ export default function FAQPage({
         config={{
           componentMappings: {
             "faqs:pages/faq": FAQPageTemplate,
+            "manutd-lm:components/layouts/gridLayout": GridLayout,
             "faqs:components/faqsTopQuestions": FAQTopQuestions,
             "faqs:components/faqsSearchInput": FAQSearchInput,
             "faqs:components/faqsSearchResult": FAQSearchResult,

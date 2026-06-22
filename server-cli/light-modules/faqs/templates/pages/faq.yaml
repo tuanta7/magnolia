@@ -9,6 +9,8 @@ areas:
     type: list
     title: FAQ Contents
     availableComponents:
+      gridLayout:
+        id: manutd-lm:components/layouts/gridLayout
       faqsTopQuestions:
         id: faqs:components/faqsTopQuestions
       faqsCategoryDetails:

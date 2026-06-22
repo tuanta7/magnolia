@@ -1,9 +1,9 @@
 class: info.magnolia.rest.delivery.jcr.v2.JcrDeliveryEndpointDefinition
 workspace: website
 rootPath: /
-depth: 3
+depth: 5
 limit: 10
-referenceDepth: 3
+referenceDepth: 5
 includeSystemProperties: true
 systemProperties:
   - mgnl:template

@@ -1,0 +1,27 @@
+title: Grid Layout
+dialog: manutd-lm:components/layouts/gridLayout
+areas:
+  column1:
+    title: Grid Column 1
+    type: list
+    availableComponents:
+      faqsSideNav:
+        id: faqs:components/faqsSideNav
+  column2:
+    title: Grid Column 2
+    type: list
+    availableComponents:
+      faqsCategoryDetails:
+        id: faqs:components/faqsCategoryDetails
+  column3:
+    title: Grid Column 3
+    type: list
+    availableComponents:
+      code:
+        id: manutd-lm:components/code
+  column4:
+    title: Grid Column 4
+    type: list
+    availableComponents:
+      code:
+        id: manutd-lm:components/code
